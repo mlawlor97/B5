@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import "./Assets/css/default.min.css";
 
 // components
 import Header from './components/headerComponent/header';
