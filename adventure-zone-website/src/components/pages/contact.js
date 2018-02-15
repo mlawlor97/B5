@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class contact extends Component {
     render() {
         return (
-            <div>
+            <div className="ContactNames">
 
-                <p> yea boi </p>
+                <p> Matt Lawlor </p>
 
             </div>
         );
