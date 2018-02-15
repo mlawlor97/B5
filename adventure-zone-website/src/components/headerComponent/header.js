@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 // import {login} from './login';
+import {
+    Link
+} from 'react-router-dom';
 
 class Header extends Component {
     render() {
@@ -11,9 +14,9 @@ class Header extends Component {
 
                     <nav className="App-links">
                         <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><Link to="/Homepage">Home</Link></li>
+                        <li><Link to="/">Login</Link></li>
+                        <li><Link to="/Contact">Contact</Link></li>
                         </ul>
                     </nav>
                 </span>
