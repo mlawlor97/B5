@@ -1,29 +1,33 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-header {
-  background-color: #222;
-  height: 140px;
-  padding: 20px;
-  color: #61DAFB;
+    position: relative;
+    background-color: #222;
+    height: 140px;
+    padding: 20px;
+    width: 100%;
+    display: block;
+    color: #61DAFB;
 }
 
 .App-title {
-  font-size: 3.5em;
+    font-size: 3.5em;
 }
 
 .App-body {
-  padding: 20px;
-  font-size: large;
+    padding: 20px;
+    font-size: large;
+    display: inline;
 }
 
 .Friends-list {
-  background-color: dimgray;
-  width: 20%;
+    background-color: dimgray;
+    width: 20%;
 }
 
 .Game-list {
-  background-color: aqua;
-  width: 80%;
+    background-color: aqua;
+    width: 80%;
 }
