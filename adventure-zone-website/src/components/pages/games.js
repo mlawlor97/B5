@@ -35,6 +35,8 @@ class games extends Component {
 
             <div className="Game-list">
                 <h2><b>GAMES</b></h2>
+                <hr/>
+                <br/>
 
                 <div className="grid-container">
                     {this.gameList.map((game) => {
@@ -44,7 +46,6 @@ class games extends Component {
                         </div>);
                     })}
                 </div>
-
 
             </div>
 

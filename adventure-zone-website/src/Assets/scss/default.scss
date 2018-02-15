@@ -23,7 +23,7 @@ header {
       list-style-type: none;
       margin: 0;
       padding: 0;
-      
+
       a {
           color: #61DAFB;
           text-decoration: none;
@@ -49,19 +49,18 @@ header {
     }
 
 .Friends-list {
-    position: relative;
+    position: absolute;
     background-color: darkgrey;
     width: 18%;
     left: 81%;
     right: 1%;
-    bottom: 175px;
     border: 2px solid black;
     border-radius: 5px;
     padding-bottom: 1em;
 }
 
 .Game-list {
-    position: relative;
+    position: absolute;
     background-color: dimgray;
     left: 1%;
     width: 79%;

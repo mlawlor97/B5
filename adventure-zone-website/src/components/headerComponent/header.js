@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import {login} from './login';
 
 class Header extends Component {
     render() {
@@ -11,9 +10,9 @@ class Header extends Component {
 
                     <nav className="App-links">
                         <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/Login">Login</a></li>
+                        <li><a href="/Contact-Us">Contact</a></li>
                         </ul>
                     </nav>
                 </span>
