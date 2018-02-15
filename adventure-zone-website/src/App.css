@@ -1,7 +1,8 @@
 .App {
     text-align: center;
     background-color: darkslategrey;
-    height: 1000px; /*dummy number*/
+    height: 3000px; /*dummy number*/
+    /*padding-bottom: 5%;*/
 }
 
 .App-body {
@@ -28,23 +29,25 @@
     left: 1%;
     width: 79%;
     border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 .grid-container {
     display: grid;
     align-items: center;
     grid-template-columns: 32% 32% 32%;
-    grid-gap: 2%;
+    grid-gap: 20px;
+    grid-row-gap: 20px;
     padding-left: 1%; padding-right: 1%;
     padding-bottom: 2%;
 }
 
 .grid-item {
     border: 2px solid black;
-    color: bisque;
-    border-radius: 5px;
-    padding: 20px;
+    border-radius: 25px;
+    /*padding: 20px;*/
+    width: 100%;
+    padding-top: 100%;
     font-size: 150%;
 }
 

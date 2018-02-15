@@ -13,15 +13,19 @@ class games extends Component {
         this.gameList = [
             {
                 title: 'Solitaire',
-                icon: 'jpeg'
+                icon: 'Solitaire.png'
             },
             {
                 title: 'Checkers',
-                icon: 'png'
+                icon: 'Checkers.png'
             },
             {
                 title: 'Chess',
-                icon: 'nope'
+                icon: 'Chess.png'
+            },
+            {
+                title: 'Connect-Four',
+                icon: 'Connect-Four.png'
             }
         ];
     }
@@ -35,9 +39,10 @@ class games extends Component {
 
                 <div className="grid-container">
                     {this.gameList.map((game) => {
-                        return ( <div className="grid-item">
-                            {game.title}
-                        </div> );
+                        return ( <div key={game.title}>
+                            <button type="button" className="grid-item"/>
+                            <p color="white">{game.title}</p>
+                        </div>);
                     })}
                 </div>
 

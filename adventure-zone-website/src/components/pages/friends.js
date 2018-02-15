@@ -28,7 +28,7 @@ class friends extends Component {
                 <h2><b>FRIENDS</b></h2>
                 {this.friendList.map((friend) => {
                     return (
-                        <div className="Friend">
+                        <div key={friend.name} className="Friend">
                             <div className="friend-name">
                                 {friend.name}
                             </div>
