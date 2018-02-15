@@ -1,33 +1,75 @@
 .App {
     text-align: center;
-}
-
-.App-header {
-    position: relative;
-    background-color: #222;
-    height: 140px;
-    padding: 20px;
-    width: 100%;
-    display: block;
-    color: #61DAFB;
-}
-
-.App-title {
-    font-size: 3.5em;
+    background-color: darkslategrey;
+    height: 1000px; /*dummy number*/
 }
 
 .App-body {
+    position: relative;
     padding: 20px;
     font-size: large;
     display: inline;
 }
 
 .Friends-list {
-    background-color: dimgray;
-    width: 20%;
+    position: absolute;
+    background-color: darkgrey;
+    width: 18%;
+    left: 81%;
+    right: 1%;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding-bottom: 1em;
 }
 
 .Game-list {
-    background-color: aqua;
-    width: 80%;
+    position: absolute;
+    background-color: dimgray;
+    left: 1%;
+    width: 79%;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.grid-container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 32% 32% 32%;
+    grid-gap: 2%;
+    padding-left: 1%; padding-right: 1%;
+    padding-bottom: 2%;
+}
+
+.grid-item {
+    border: 2px solid black;
+    color: bisque;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+.Friend {
+    position: relative;
+    background-color: slategray;
+    height: 4em;
+}
+
+.friend-name {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    text-align: left; left: 1em;
+}
+
+.friend-status {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    text-align: right;
+    right: 1em;
+}
+
+hr {
+    border: 2px solid black;
+    margin-bottom: 0em; margin-top: 0em;
 }

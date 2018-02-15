@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 import './../../App.css';
+import Friends from './friends';
+import Games from './games';
 
 class homePage extends Component {
     render() {
         return (
             <div className="App-body">
                 <main>
-                    <div className="Game-list">
-                        <p>games</p>
-                    </div>
 
-                    <div className="Friends-list">
-                        <p>friends</p>
-                    </div>
+                    <Games/>
+
+                    <Friends/>
+
                 </main>
 
             </div>
