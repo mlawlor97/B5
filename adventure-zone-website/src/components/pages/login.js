@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-
+import request from "../../../node_modules/superagent/superagent";
 
 class Login extends Component {
-    // let SERVER_IP = '10.36.16.229:3000';
-
     constructor() {
         super();
         this.state = {userName: '', password: ''};
 
-        // this.onFieldChange = this.onFieldChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -20,8 +17,14 @@ class Login extends Component {
 
     handleSubmit(event) {
         alert('A username was submitted: ' + event.target.userName);
-        console.log(this.state.userName + "  " + this.state.password);
-
+        request
+            .post('http://10.36.16.229:3000/users')
+            .set('Content-Type', 'application/raw')
+            .send({ username: this.state.userName,
+                    password: this.state.password})
+            .end(function(err, res){
+                alert(res.text);
+            });
         event.preventDefault();
     }
 
