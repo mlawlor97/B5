@@ -10,9 +10,11 @@ class Header extends Component {
                     <h1 className="App-title"><b>ADVENTURE ZONE</b></h1>
 
                     <nav className="App-links">
-                        <li>Home</li>
-                        <li>Login</li>
-                        <li>Contact</li>
+                        <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Contact</a></li>
+                        </ul>
                     </nav>
                 </span>
 

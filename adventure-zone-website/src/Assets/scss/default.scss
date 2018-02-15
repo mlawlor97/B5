@@ -18,7 +18,20 @@ header {
     position: absolute;
     top: 50%; right: 15px;
     text-align: right;
-    }
+  }
+  ul, li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      
+      a {
+          color: #61DAFB;
+          text-decoration: none;
+          &:hover {
+              color: white;
+          }
+      }
+  }
 }
 
 .App {
@@ -34,8 +47,6 @@ header {
         font-size: large;
         display: inline;
     }
-
-}
 
 .Friends-list {
     position: relative;
