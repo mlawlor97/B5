@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './../../App.css';
 import Friends from './friends';
 import Games from './games';
 
