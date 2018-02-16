@@ -31,6 +31,7 @@ class Login extends Component {
     render() {
         return (
             <div className='Login-page'>
+                <p>Login</p>
                 <form>
                     <label>
                         Username: <input type="text" value={this.state.userName} name="userName"
