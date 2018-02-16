@@ -7,6 +7,10 @@ class contact extends Component {
 
                 <p> Matt Lawlor </p>
                 <p> Connor Kocolowski </p>
+                <p> Hayes Hundman </p>
+                <p> Tanner Hinders </p>
+                <p> Emmett Kozlowski </p>
+                <p> Brett Alena </p>
 
             </div>
         );

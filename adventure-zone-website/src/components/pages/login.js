@@ -16,16 +16,29 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        alert('A username was submitted: ' + event.target.userName);
-        request
-            .post('http://10.36.16.229:3000/users')
-            .set('Content-Type', 'application/raw')
-            .send({ username: this.state.userName,
-                    password: this.state.password})
-            .end(function(err, res){
-                alert(res.text);
-            });
-        event.preventDefault();
+        // alert('A username was submitted: ' + event.target.userName);
+        // request
+            // .post('http://10.26.180.193:3000/users')
+            // .set('Content-Type', 'application/raw')
+            // // .send({ username: this.state.userName,
+            // //         password: this.state.password})
+            // .send({"username": "matt",
+            //         "password": "password"})
+            // .end(function(err, res){
+            //     // alert(res);
+            // });
+        fetch('https://10.26.180.193:3000/users', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: 'matt',
+                password: 'password',
+            })
+        })
+        // event.preventDefault();
     }
 
     render() {
@@ -41,7 +54,7 @@ class Login extends Component {
                         Password: <input type="text" value={this.state.password} name="password"
                                          onChange={this.onFieldChange('password').bind(this)}/>
                     </label><br/>
-                    <input type="submit" value="Submit"/>
+                    <input type="submit" value="Submit" onSubmit={this.handleSubmit()}/>
                 </form>
             </div>
         );
