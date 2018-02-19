@@ -14,7 +14,7 @@ class Header extends Component {
                     <nav className="App-links">
                         <ul>
                         <li><Link to="/Homepage">Home</Link></li>
-                        <li><Link to="/">Login</Link></li>
+                        <li><Link to="/Login">Login</Link></li>
                         <li><Link to="/Contact">Contact</Link></li>
                         </ul>
                     </nav>

@@ -21,9 +21,9 @@ class App extends Component {
             <div className="App">
                 <Header/>
 
+                <Route exact path='/Login' component={Login} />
                 <Route exact path='/Homepage' component={Homepage} />
                 <Route exact path='/Contact' component={Contact} />
-                <Login/>
 
                 <Footer/>
             </div>
