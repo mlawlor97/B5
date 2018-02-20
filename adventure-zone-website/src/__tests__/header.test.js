@@ -1,7 +1,5 @@
 import React from 'react';
-import Link from '../Link.react';
 import renderer from 'react-test-renderer';
-
 import { Link } from 'react-router-dom';
 import { StaticRouter } from 'react-router';
 import homePage from '../components/pages/homePage';
@@ -9,9 +7,13 @@ import Login from '../components/pages/login';
 import Contact from '../components/pages/contact';
 
 it('Homepage matches', () => {
-    const tree = renderer
-        .create(<Link page="http://localhost:3000/Homepage">Homepage</Link>)
-        .toJSON();
+    const Homepage = renderer.create(
+        <StaticRouter location="/Homepage" context={Homepage}>
+            <Link to="/Homepage" />
+        </StaticRouter>
+    );
+
+    let tree = Homepage.toJSON();
     expect(tree).toMatchSnapshot();
 });
 
