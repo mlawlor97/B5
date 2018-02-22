@@ -28,8 +28,8 @@ class Login extends Component {
         const url = 'http://10.36.17.71:3000/users';
 
         let data = {
-            username: 'matt',
-            password: 'password'
+            "username": 'matt',
+            "password": 'password'
         }
 
         fetch(url, {
