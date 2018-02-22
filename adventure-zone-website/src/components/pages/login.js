@@ -24,25 +24,27 @@ class Login extends Component {
             return;
         }
         event.preventDefault();
+        alert('Username: ' + event.target.username.value + '\n' +
+                'Password: ' + event.target.password.value);
 
         const url = 'http://10.36.17.71:3000/users';
 
         let data = {
-            "username": 'matt',
-            "password": 'password'
+            username: event.target.username.value,
+            password: event.target.password.value
         }
-
+        
         fetch(url, {
             method: 'post',
-            headers: new Headers({
-                'content-type': 'application'
-            }),
+            headers: {
+                'Content-Type': 'application'
+            },
             body: JSON.stringify(data)
         }).then(function (response) {
-            console.log(response.json());
+            console.log(JSON.stringify(response));
             if(!response.ok) {
-                console.log(response.statusCode);
-                throw Error(response.statusCode);
+                console.log(response.status);
+                throw Error(response.status);
             }
             return response.json();
         }).catch(error => {

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ee8aaaf-d3a6-4df8-aefd-b21097578fa6" name="Default" comment="changed title">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Assets/css/default.min.css" afterPath="$PROJECT_DIR$/src/Assets/css/default.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/games.js" afterPath="$PROJECT_DIR$/src/components/pages/games.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/__tests__/header.test.js" afterPath="$PROJECT_DIR$/src/__tests__/header.test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/headerComponent/header.js" afterPath="$PROJECT_DIR$/src/components/headerComponent/header.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/login.js" afterPath="$PROJECT_DIR$/src/components/pages/login.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="103">
+              <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -42,18 +42,18 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="25" column="67" lean-forward="true" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
+            <state relative-caret-position="210">
+              <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="games.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="games.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/games.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+            <state relative-caret-position="300">
+              <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -61,12 +61,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Assets/scss/default.scss">
+      <file leaf-file-name="header.test.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/__tests__/header.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="84" column="14" lean-forward="false" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="337">
+              <caret line="39" column="3" lean-forward="true" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,8 +76,8 @@
       <file leaf-file-name="header.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/headerComponent/header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="67" lean-forward="true" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+            <state relative-caret-position="195">
+              <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -122,13 +124,13 @@
         <option value="$PROJECT_DIR$/src/components/pages/friends.js" />
         <option value="$PROJECT_DIR$/src/Assets/css/default.min.css" />
         <option value="$PROJECT_DIR$/src/components/headerComponent/login.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/components/headerComponent/header.js" />
         <option value="$PROJECT_DIR$/src/components/pages/contact.js" />
-        <option value="$PROJECT_DIR$/src/__tests__/header.test.js" />
         <option value="$PROJECT_DIR$/src/Assets/scss/default.scss" />
-        <option value="$PROJECT_DIR$/src/components/pages/login.js" />
         <option value="$PROJECT_DIR$/src/components/pages/games.js" />
+        <option value="$PROJECT_DIR$/src/__tests__/header.test.js" />
+        <option value="$PROJECT_DIR$/src/components/headerComponent/header.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/login.js" />
       </list>
     </option>
   </component>
@@ -196,38 +198,7 @@
             <path>
               <item name="adventure-zone-website" type="b2602c69:ProjectViewProjectNode" />
               <item name="adventure-zone-website" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adventure-zone-website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adventure-zone-website" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adventure-zone-website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adventure-zone-website" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="__tests__" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adventure-zone-website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adventure-zone-website" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="__tests__" type="462c0819:PsiDirectoryNode" />
-              <item name="__snapshots__" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adventure-zone-website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adventure-zone-website" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adventure-zone-website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adventure-zone-website" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Assets" type="462c0819:PsiDirectoryNode" />
-              <item name="scss" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="adventure-zone-website" type="b2602c69:ProjectViewProjectNode" />
@@ -241,13 +212,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="headerComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adventure-zone-website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adventure-zone-website" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -282,8 +246,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.Contact matches">
-    <configuration name="App.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="App.js" working-dir="$PROJECT_DIR$/src" />
+  <component name="RunManager" selected="Jest.header.test.js">
     <configuration name="Contact matches" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <working-dir value="$PROJECT_DIR$" />
@@ -405,20 +368,27 @@
       <arguments />
       <envs />
     </configuration>
+    <configuration name="header.test.js" type="JavaScriptTestRunnerJest" factoryName="Jest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/__tests__/header.test.js" />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.App.js" />
-      <item index="1" class="java.lang.String" itemvalue="Gulp.js.default" />
-      <item index="2" class="java.lang.String" itemvalue="Jest.Homepage matches" />
-      <item index="3" class="java.lang.String" itemvalue="Jest.Login matches" />
-      <item index="4" class="java.lang.String" itemvalue="Jest.Contact matches" />
+      <item index="0" class="java.lang.String" itemvalue="Gulp.js.default" />
+      <item index="1" class="java.lang.String" itemvalue="Jest.Homepage matches" />
+      <item index="2" class="java.lang.String" itemvalue="Jest.Login matches" />
+      <item index="3" class="java.lang.String" itemvalue="Jest.Contact matches" />
+      <item index="4" class="java.lang.String" itemvalue="Jest.header.test.js" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Jest.Contact matches" />
-        <item index="1" class="java.lang.String" itemvalue="Jest.Login matches" />
-        <item index="2" class="java.lang.String" itemvalue="Jest.Homepage matches" />
-        <item index="3" class="java.lang.String" itemvalue="Gulp.js.default" />
-        <item index="4" class="java.lang.String" itemvalue="Node.js.App.js" />
+        <item index="0" class="java.lang.String" itemvalue="Jest.header.test.js" />
+        <item index="1" class="java.lang.String" itemvalue="Jest.Contact matches" />
+        <item index="2" class="java.lang.String" itemvalue="Jest.Login matches" />
+        <item index="3" class="java.lang.String" itemvalue="Jest.Homepage matches" />
+        <item index="4" class="java.lang.String" itemvalue="Gulp.js.default" />
       </list>
     </recent_temporary>
   </component>
@@ -434,41 +404,44 @@
       <updated>1518642626013</updated>
       <workItem from="1518642629542" duration="2491000" />
       <workItem from="1518661485906" duration="15372000" />
-      <workItem from="1519325843659" duration="3998000" />
+      <workItem from="1519325843659" duration="5425000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Contact_matches - 2018.02.22 at 12h 53m 03s.xml">
+    <history-entry file="Contact_matches - 2018.02.22 at 14h 47m 46s.xml">
       <configuration name="Contact matches" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="Contact_matches - 2018.02.22 at 13h 20m 04s.xml">
+    <history-entry file="Contact_matches - 2018.02.22 at 14h 48m 02s.xml">
       <configuration name="Contact matches" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="Contact_matches - 2018.02.22 at 13h 20m 26s.xml">
+    <history-entry file="Contact_matches - 2018.02.22 at 14h 48m 27s.xml">
       <configuration name="Contact matches" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="Homepage_matches - 2018.02.22 at 12h 51m 46s.xml">
+    <history-entry file="Contact_matches - 2018.02.22 at 14h 48m 34s.xml">
+      <configuration name="Contact matches" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="Homepage_matches - 2018.02.22 at 14h 47m 02s.xml">
       <configuration name="Homepage matches" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="Homepage_matches - 2018.02.22 at 12h 52m 06s.xml">
-      <configuration name="Homepage matches" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="Login_matches - 2018.02.22 at 12h 52m 21s.xml">
+    <history-entry file="Login_matches - 2018.02.22 at 14h 47m 34s.xml">
       <configuration name="Login matches" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="renders_without_crashing - 2018.02.14 at 15h 17m 40s.xml">
-      <configuration name="renders without crashing" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="header_test_js - 2018.02.22 at 14h 48m 43s.xml">
+      <configuration name="header.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="renders_without_crashing - 2018.02.14 at 18h 49m 40s.xml">
-      <configuration name="renders without crashing" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="header_test_js - 2018.02.22 at 14h 50m 02s.xml">
+      <configuration name="header.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="renders_without_crashing - 2018.02.15 at 08h 24m 50s.xml">
-      <configuration name="renders without crashing" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="header_test_js - 2018.02.22 at 14h 50m 19s.xml">
+      <configuration name="header.test.js" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="header_test_js - 2018.02.22 at 14h 50m 45s.xml">
+      <configuration name="header.test.js" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35374000" />
+    <option name="totallyTimeSpent" value="36801000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1175" height="778" extended-state="0" />
@@ -736,16 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/__tests__/header.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="31" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/contact.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -762,10 +725,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/Assets/scss/default.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="271">
+          <caret line="84" column="14" lean-forward="false" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -780,47 +743,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/games.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="67" lean-forward="true" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/headerComponent/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="67" lean-forward="true" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+        <state relative-caret-position="300">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Assets/scss/default.scss">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="84" column="14" lean-forward="false" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
+        <state relative-caret-position="375">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__tests__/header.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="39" column="3" lean-forward="true" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/headerComponent/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="103">
+          <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/games.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
