@@ -22,7 +22,7 @@ class Login extends Component {
         }
         event.preventDefault();
 
-        const url = 'http://10.36.19.159:3000/users';
+        const url = 'http://10.26.180.3:3000/users';
 
         let data = {
             username: event.target.username.value,
@@ -32,6 +32,7 @@ class Login extends Component {
         fetch(url, {
             method: 'POST',
             headers: {
+                'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             body: JSON.stringify(data)
