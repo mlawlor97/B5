@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import fetch from 'node-fetch';
 
 class Login extends Component {
     // let SERVER_IP = '10.36.16.229:3000';
@@ -7,9 +7,6 @@ class Login extends Component {
     constructor() {
         super();
         this.state = {username: '', password: ''};
-
-        // this.onFieldChange = this.onFieldChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     onFieldChange(fieldName) {
@@ -24,32 +21,29 @@ class Login extends Component {
             return;
         }
         event.preventDefault();
-        alert('Username: ' + event.target.username.value + '\n' +
-                'Password: ' + event.target.password.value);
 
-        const url = 'http://10.36.17.71:3000/users';
+        const url = 'http://10.36.19.159:3000/users';
 
         let data = {
             username: event.target.username.value,
             password: event.target.password.value
-        }
-        
+        };
+
         fetch(url, {
-            method: 'post',
+            method: 'POST',
             headers: {
-                'Content-Type': 'application'
+                'Accept': 'application/json'
             },
             body: JSON.stringify(data)
         }).then(function (response) {
-            console.log(JSON.stringify(response));
             if(!response.ok) {
-                console.log(response.status);
+                console.error(response.status);
                 throw Error(response.status);
             }
-            return response.json();
+            return JSON.stringify(response);
         }).catch(error => {
             console.error("Error: ", error);
-        })
+        });
     }
 
     render() {
