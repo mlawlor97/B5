@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {
     BrowserRouter as Router,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
 
 // components
@@ -21,9 +20,9 @@ class App extends Component {
             <div className="App">
                 <Header/>
 
+                <Route exact path='/' component={Login} />
                 <Route exact path='/Homepage' component={Homepage} />
                 <Route exact path='/Contact' component={Contact} />
-                <Route exact path='/' component={Login} />
 
                 <Footer/>
             </div>

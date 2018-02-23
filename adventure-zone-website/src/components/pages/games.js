@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 
 class games extends Component {
 
@@ -27,6 +28,26 @@ class games extends Component {
                 icon: 'Connect-Four.png'
             }
         ];
+
+        this.state.redirect = false
+        this.state.page = '/'
+    }
+
+    state = {
+        redirect: false,
+        page: '/'
+    }
+
+    setRedirect = (name) => {
+        this.setState({
+            redirect: true,
+            page: '/' + name
+        })
+    }
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.page}/>
+        }
     }
 
     render() {
@@ -37,11 +58,11 @@ class games extends Component {
                 <h2><b>GAMES</b></h2>
                 <hr/>
                 <br/>
-
                 <div className="grid-container">
                     {this.gameList.map((game) => {
                         return ( <div key={game.title}>
-                            <button type="button" className="grid-item"/>
+                            {this.renderRedirect()}
+                            <button onClick={() => this.setRedirect(game.title)} type="button" className="grid-item"/>
                             <p color="white">{game.title}</p>
                         </div>);
                     })}
