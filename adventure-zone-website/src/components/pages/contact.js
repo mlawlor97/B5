@@ -5,7 +5,7 @@ class contact extends Component {
         return (
             <div className="ContactNames">
 
-                <p> Matt Lawlor </p>
+                <p> Matt Lawlor Sux </p>
 
             </div>
         );
