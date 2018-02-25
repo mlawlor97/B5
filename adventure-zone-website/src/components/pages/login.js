@@ -41,6 +41,7 @@ class Login extends Component {
                 console.error(response.status);
                 throw Error(response.status);
             }
+            alert(response.message);
             return JSON.stringify(response);
         }).catch(error => {
             console.error("Error: ", error);
