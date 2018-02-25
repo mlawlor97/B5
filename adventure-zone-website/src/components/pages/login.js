@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import fetch from 'node-fetch';
 
 class Login extends Component {
-    // let SERVER_IP = '10.36.16.229:3000';
 
     constructor() {
         super();
@@ -22,14 +21,14 @@ class Login extends Component {
         }
         event.preventDefault();
 
-        const url = 'http://10.26.180.3:3000/users';
+        const url = 'proj-319.cs.iastate.edu:3000';
 
         let data = {
             username: event.target.username.value,
             password: event.target.password.value
         };
 
-        fetch(url, {
+        fetch(url + '/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +40,9 @@ class Login extends Component {
                 console.error(response.status);
                 throw Error(response.status);
             }
+
             alert(response.message);
+
             return JSON.stringify(response);
         }).catch(error => {
             console.error("Error: ", error);

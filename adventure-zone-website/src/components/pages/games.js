@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
+import fetch from 'node-fetch';
 
 class games extends Component {
+
 
     constructor() {
         super();
 
-        // let gameList;       //list of playable games
+        let url = 'proj-319.cs.iastate.edu/games:3000';
+        // let games;       //list of playable games
 
         // getGames() {}    //will get from database later
 
@@ -28,6 +31,18 @@ class games extends Component {
                 icon: 'Connect-Four.png'
             }
         ];
+
+        // fetch(url)
+        //     .then(function (response) {
+        //         if(!response.ok) {
+        //             console.error(response.status);
+        //             throw Error(response.status);
+        //         }
+        //
+        //         console.log(response);
+        //
+        //         return JSON.stringify(response);
+        // });
 
         this.state.redirect = false
         this.state.page = '/'
