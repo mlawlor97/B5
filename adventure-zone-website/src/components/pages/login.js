@@ -28,8 +28,6 @@ class Login extends Component {
             password: this.state.password.value
         };
 
-        // let url = 'proj-319.cs.iastate.edu/users:3000';
-
         fetch('proj-319.cs.iastate.edu/users:3000', {
             method: 'POST',
             headers: {
@@ -63,9 +61,7 @@ class Login extends Component {
             password: this.state.password.value
         };
 
-        // let url = 'proj-319.cs.iastate.edu/users-new:3000';
-
-        fetch('proj-319.cs.iastate.edu/users-new:3000', {
+        fetch('proj-319.cs.iastate.edu/users/new:3000', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
