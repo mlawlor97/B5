@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import fetch from 'node-fetch';
+import userfile from '../UserFile';
 
 class Login extends Component {
 
@@ -24,11 +25,11 @@ class Login extends Component {
         event.preventDefault();
 
         let data = {
-            username: this.state.username.value,
-            password: this.state.password.value
+            username: this.state.username,
+            password: this.state.password
         };
 
-        fetch('proj-319.cs.iastate.edu/users:3000', {
+        fetch('http://proj-319-B5.cs.iastate.edu:3000/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,11 +42,15 @@ class Login extends Component {
                 throw Error(response.status);
             }
 
-            alert(response.message);
+            alert(response.status);
+
+            if (response.status == 200) {
+                userfile.setName(data.username);
+            }
 
             return JSON.stringify(response);
         }).catch(error => {
-            // console.error("Error: ", error);
+            console.error("Error: ", error);
         });
     }
 
@@ -57,11 +62,11 @@ class Login extends Component {
         event.preventDefault();
 
         let data = {
-            username: this.state.username.value,
-            password: this.state.password.value
+            username: this.state.username,
+            password: this.state.password
         };
 
-        fetch('proj-319.cs.iastate.edu/users/new:3000', {
+        fetch('http://proj-319-B5.cs.iastate.edu:3000/users/new', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -74,11 +79,11 @@ class Login extends Component {
                 throw Error(response.status);
             }
 
-            alert(response.message);
+            alert(response);
 
             return JSON.stringify(response);
         }).catch(error => {
-            // console.error("Error: ", error);
+            console.error("Error: ", error);
         });
     }
 
