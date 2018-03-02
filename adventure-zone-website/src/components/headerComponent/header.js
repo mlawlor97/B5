@@ -12,7 +12,7 @@ class Header extends Component {
 
                 <span>
                     <h1 className="App-title"><b>ADVENTURE ZONE</b></h1>
-                    {/*<h2>Welcome: {UserFile.getUserName}</h2>*/}
+                    <h2>Welcome: {UserFile.getUserName()}</h2>
                     <nav className="App-links">
                         <ul>
                         <li><Link to="/Homepage">Home</Link></li>

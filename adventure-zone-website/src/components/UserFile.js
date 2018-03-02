@@ -4,14 +4,16 @@ class UserFile{
         this.state = {
             username: ''
         }
+        this.getUserName = this.getUserName.bind(this);
+        this.setName = this.setName.bind(this);
     }
 
-    getUserName = () => {
+    static getUserName = () => {
         return this.state.username;
     }
 
-    setName = (props) => {
-        this.state.username = props.name;
+    static setName = (props) => {
+        this.state.username = props;
         return;
     }
 
