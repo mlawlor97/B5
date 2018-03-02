@@ -1,18 +1,16 @@
-class UserFile{
+class UserFile {
 
     constructor() {
-        this.state = {
-            username: ''
-        }
+        var username = '';
     }
 
-    getUserName = () => {
-        return this.state.username;
-    }
+    static getName = () => {
+        // alert(this.username);
+        return this.username;
+    };
 
-    setName = (props) => {
-        this.state.username = props.name;
-        return;
+    static setName = (props) => {
+        this.username = props;
     }
 
 }

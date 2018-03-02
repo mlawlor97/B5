@@ -37,15 +37,22 @@ class Login extends Component {
             },
             body: JSON.stringify(data)
         }).then(function (response) {
+            if (response.status === 500) {
+                alert(data.username + ' is not a registered user');
+            }
+
             if(!response.ok) {
                 console.error(response.status);
                 throw Error(response.status);
             }
 
-            alert(response.status);
-
-            if (response.status == 200) {
-                userfile.setName(data.username);
+            if (response.status === 200) {
+                response.json().then(function (message) {
+                    alert(message['message']);
+                    if (message['message'] === 'you are logged in') {
+                        userfile.setName(data.username);
+                    }
+                });
             }
 
             return JSON.stringify(response);
@@ -74,12 +81,23 @@ class Login extends Component {
             },
             body: JSON.stringify(data)
         }).then(function (response) {
+            if (response.status === 500) {
+                alert('Username is taken');
+            }
+
             if(!response.ok) {
                 console.error(response.status);
                 throw Error(response.status);
             }
 
-            alert(response);
+            if (response.status === 200) {
+                response.json().then(function (message) {
+                    alert(message['message']);
+                    if (message['message'] === 'you are logged in') {
+                        userfile.setName(data.username);
+                    }
+                });
+            }
 
             return JSON.stringify(response);
         }).catch(error => {

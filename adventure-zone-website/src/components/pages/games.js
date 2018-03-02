@@ -8,7 +8,7 @@ class games extends Component {
     constructor() {
         super();
 
-        let url = 'proj-319.cs.iastate.edu/games:3000';
+        // let url = 'proj-319.cs.iastate.edu/games:3000';
         // let games;       //list of playable games
 
         // getGames() {}    //will get from database later
