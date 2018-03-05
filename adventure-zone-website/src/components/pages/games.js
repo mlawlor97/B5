@@ -1,69 +1,59 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
-import fetch from 'node-fetch';
 
 class games extends Component {
-
 
     constructor() {
         super();
 
-        // let url = 'proj-319.cs.iastate.edu/games:3000';
-        // let games;       //list of playable games
+        this.fetchGames();
 
-        // getGames() {}    //will get from database later
-
-        this.gameList = [
-            {
-                title: 'Solitaire',
-                icon: 'Solitaire.png'
-            },
-            {
-                title: 'Checkers',
-                icon: 'Checkers.png'
-            },
-            {
-                title: 'Chess',
-                icon: 'Chess.png'
-            },
-            {
-                title: 'Connect-Four',
-                icon: 'Connect-Four.png'
-            }
-        ];
-
-        // fetch(url)
-        //     .then(function (response) {
-        //         if(!response.ok) {
-        //             console.error(response.status);
-        //             throw Error(response.status);
-        //         }
-        //
-        //         console.log(response);
-        //
-        //         return JSON.stringify(response);
-        // });
-
-        this.state.redirect = false
-        this.state.page = '/'
+        this.state.redirect = false;
+        this.state.page = '/';
     }
 
     state = {
+        gameList: [],
         redirect: false,
         page: '/'
-    }
+    };
+
+    fetchGames = async () => {
+        let gamesList = [];
+
+        const response = await fetch('http://proj-319-B5.cs.iastate.edu:3000/api/games', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
+
+        const message = await response.json();
+        let gameNames = JSON.parse(JSON.stringify(await message));
+        for (let i = 0; i < gameNames.length; i++) {
+            gamesList.push(gameNames[i]['Name']);
+        }
+
+        this.setState({
+            gameList: gamesList
+        });
+
+        return gamesList;
+    };
 
     setRedirect = (name) => {
         this.setState({
             redirect: true,
             page: '/' + name
         })
-    }
+    };
+
     renderRedirect = () => {
         if (this.state.redirect) {
             return <Redirect to={this.state.page}/>
         }
-    }
+    };
 
     render() {
 
@@ -74,11 +64,11 @@ class games extends Component {
                 <hr/>
                 <br/>
                 <div className="grid-container">
-                    {this.gameList.map((game) => {
-                        return ( <div key={game.title}>
+                    {this.state.gameList.map((game) => {
+                        return ( <div key={game}>
                             {this.renderRedirect()}
-                            <button onClick={() => this.setRedirect(game.title)} type="button" className="grid-item"/>
-                            <p color="white">{game.title}</p>
+                            <button onClick={() => this.setRedirect(game)} type="button" className="grid-item"/>
+                            <p color="white">{game}</p>
                         </div>);
                     })}
                 </div>

@@ -1,11 +1,6 @@
 class UserFile {
 
-    constructor() {
-        var username = '';
-    }
-
     static getName = () => {
-        // alert(this.username);
         return this.username;
     };
 
