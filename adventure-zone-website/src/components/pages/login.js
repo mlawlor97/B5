@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import request from "../../../node_modules/superagent/superagent";
+import fetch from 'node-fetch';
+import userfile from '../UserFile';
 
 class Login extends Component {
+
     constructor() {
         super();
-        this.state = {userName: '', password: ''};
-
+        this.state = {username: '', password: ''};
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleRegister = this.handleRegister.bind(this);
     }
 
     onFieldChange(fieldName) {
@@ -16,45 +18,91 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        // alert('A username was submitted: ' + event.target.userName);
-        // request
-            // .post('http://10.26.180.193:3000/users')
-            // .set('Content-Type', 'application/raw')
-            // // .send({ username: this.state.userName,
-            // //         password: this.state.password})
-            // .send({"username": "matt",
-            //         "password": "password"})
-            // .end(function(err, res){
-            //     // alert(res);
-            // });
-        fetch('https://10.26.180.193:3000/users', {
+        if (!event.target.checkValidity()) {
+            console.log('invalid form');
+            return;
+        }
+        event.preventDefault();
+
+        let data = {
+            username: this.state.username,
+            password: this.state.password
+        };
+
+        fetch('http://proj-319-B5.cs.iastate.edu:3000/users', {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                username: 'matt',
-                password: 'password',
-            })
-        })
-        // event.preventDefault();
+            body: JSON.stringify(data)
+        }).then(function (response) {
+            if(!response.ok) {
+                console.error(response.status);
+                throw Error(response.status);
+            }
+
+            alert(response.status);
+
+            if (response.status == 200) {
+                userfile.setName(data.username);
+            }
+
+            return JSON.stringify(response);
+        }).catch(error => {
+            console.error("Error: ", error);
+        });
+    }
+
+    handleRegister(event) {
+        if (!event.target.checkValidity()) {
+            console.log('invalid form');
+            return;
+        }
+        event.preventDefault();
+
+        let data = {
+            username: this.state.username,
+            password: this.state.password
+        };
+
+        fetch('http://proj-319-B5.cs.iastate.edu:3000/users/new', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(function (response) {
+            if(!response.ok) {
+                console.error(response.status);
+                throw Error(response.status);
+            }
+
+            alert(response);
+
+            return JSON.stringify(response);
+        }).catch(error => {
+            console.error("Error: ", error);
+        });
     }
 
     render() {
         return (
             <div className='Login-page'>
-                <p>Login</p>
                 <form>
                     <label>
-                        Username: <input type="text" value={this.state.userName} name="userName"
-                                         onChange={this.onFieldChange('userName').bind(this)}/>
+                        Username: <input type="text" value={this.state.username} name="username"
+                                         onChange={this.onFieldChange('username').bind(this)}
+                                         placeholder={'username'}/>
                     </label><br/>
                     <label>
                         Password: <input type="text" value={this.state.password} name="password"
-                                         onChange={this.onFieldChange('password').bind(this)}/>
+                                         onChange={this.onFieldChange('password').bind(this)}
+                                         placeholder={'password'}/>
                     </label><br/>
-                    <input type="submit" value="Submit" onSubmit={this.handleSubmit()}/>
+                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                    <button type="submit" onClick={this.handleRegister}>Register</button>
                 </form>
             </div>
         );
