@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import fetch from 'node-fetch';
 import {User} from '../UserFile';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 
 class Login extends Component {
 
@@ -19,8 +19,6 @@ class Login extends Component {
     }
 
     tryLogin = async (data, reg) => {
-        // User.name = 'help';
-        // window.location.reload();
         if (data.username === '' || data.password === '') {
             alert('Invalid Username or Password');
             return 24;
@@ -65,7 +63,7 @@ class Login extends Component {
             alert(message['message']);
             if (message['message'] === 'you are logged in') {
                 User.name = data.username;
-                // window.location.reload();
+                this.props.history.push(Login);
             }
         }
     };
@@ -100,9 +98,9 @@ class Login extends Component {
         this.tryLogin(data, true);
     }
 
-    render() {
-        return (
-            <div className='Login-page'>
+    getPage() {
+        if (User.name === '') {
+            return (
                 <form>
                     <label>
                         Username: <input type="text" value={this.state.username} name="username"
@@ -117,6 +115,24 @@ class Login extends Component {
                     <button type="submit" onClick={this.handleSubmit}>Submit</button>
                     <button type="submit" onClick={this.handleRegister}>Register</button>
                 </form>
+            );
+        } else {
+            return (
+              <div>
+                  <button onClick={() => {
+                      User.name = '';
+                      this.props.history.go(Login);
+                      // this.props.history.
+                  }}>Logout</button>
+              </div>
+            );
+        }
+    }
+
+    render() {
+        return (
+            <div className='Login-page'>
+                {this.getPage()}
             </div>
         );
     }
