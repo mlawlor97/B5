@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import fetch from 'node-fetch';
-import userfile from '../UserFile';
+import {User} from '../UserFile';
+import {Redirect} from 'react-router-dom';
 
 class Login extends Component {
 
@@ -17,6 +18,58 @@ class Login extends Component {
         }
     }
 
+    tryLogin = async (data, reg) => {
+        // User.name = 'help';
+        // window.location.reload();
+        if (data.username === '' || data.password === '') {
+            alert('Invalid Username or Password');
+            return 24;
+        }
+        let response;
+        if (reg) {
+            response = await fetch('http://proj-319-B5.cs.iastate.edu:3000/users/new', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+        } else {
+            response = await fetch('http://proj-319-B5.cs.iastate.edu:3000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+        }
+
+        if (response.status === 500) {
+            if (reg) {
+                alert('Username is taken');
+            } else {
+                alert(data.username + ' is not a registered user');
+            }
+            return -1;
+        }
+
+        if(!response.ok) {
+            console.error(response.status);
+            throw Error(response.status);
+        }
+
+        if (response.status === 200) {
+            const message = await response.json();
+            alert(message['message']);
+            if (message['message'] === 'you are logged in') {
+                User.name = data.username;
+                // window.location.reload();
+            }
+        }
+    };
+
     handleSubmit(event) {
         if (!event.target.checkValidity()) {
             console.log('invalid form');
@@ -29,36 +82,7 @@ class Login extends Component {
             password: this.state.password
         };
 
-        fetch('http://proj-319-B5.cs.iastate.edu:3000/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(function (response) {
-            if (response.status === 500) {
-                alert(data.username + ' is not a registered user');
-            }
-
-            if(!response.ok) {
-                console.error(response.status);
-                throw Error(response.status);
-            }
-
-            if (response.status === 200) {
-                response.json().then(function (message) {
-                    alert(message['message']);
-                    if (message['message'] === 'you are logged in') {
-                        userfile.setName(data.username);
-                    }
-                });
-            }
-
-            return JSON.stringify(response);
-        }).catch(error => {
-            console.error("Error: ", error);
-        });
+        this.tryLogin(data, false);
     }
 
     handleRegister(event) {
@@ -73,36 +97,7 @@ class Login extends Component {
             password: this.state.password
         };
 
-        fetch('http://proj-319-B5.cs.iastate.edu:3000/users/new', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(function (response) {
-            if (response.status === 500) {
-                alert('Username is taken');
-            }
-
-            if(!response.ok) {
-                console.error(response.status);
-                throw Error(response.status);
-            }
-
-            if (response.status === 200) {
-                response.json().then(function (message) {
-                    alert(message['message']);
-                    if (message['message'] === 'you are logged in') {
-                        userfile.setName(data.username);
-                    }
-                });
-            }
-
-            return JSON.stringify(response);
-        }).catch(error => {
-            console.error("Error: ", error);
-        });
+        this.tryLogin(data, true);
     }
 
     render() {

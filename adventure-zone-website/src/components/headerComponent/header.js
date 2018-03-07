@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {
     Link
 } from 'react-router-dom';
-import userfile from '../UserFile';
+import {User} from '../UserFile';
 
 class Header extends Component {
 
@@ -12,7 +12,8 @@ class Header extends Component {
 
                 <span>
                     <h1 className="App-title"><b>ADVENTURE ZONE</b></h1>
-                    <h2 className="User-title">Welcome: {userfile.getName()}</h2>
+                    <h2 className="User-title" hidden={User.name === ''}>
+                        Welcome: {User.name}</h2>
                     <nav className="App-links">
                         <ul>
                         <li><Link to="/Homepage">Home</Link></li>
