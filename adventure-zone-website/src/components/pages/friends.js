@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 import {User} from "../UserFile";
 
 class friends extends Component {
@@ -6,14 +7,17 @@ class friends extends Component {
     constructor() {
         super();
         this.fetchFriends();
+        this.state.redirect = false;
     }
 
     state = {
-        friendList: []
+        friendList: [],
+        redirect: false
     }
 
     fetchFriends = async () => {
         let friendsList = [];
+        // let friendsStatus = [];
 
         const response = await fetch('http://proj-319-B5.cs.iastate.edu:3000/api/friends?username=' + User.name, {
             method: 'GET',
@@ -27,7 +31,8 @@ class friends extends Component {
 
         let friendNames = JSON.parse(JSON.stringify(await message));
         for (let i = 0; i < friendNames.length; i++) {
-            friendsList.push(friendNames[i]['Name']);
+            // friendsList.push({name: friendNames[i]['Name'], status: friendNames[i]['Status']});
+            friendsList.push({name: friendNames[i]['Name'], status: 'offline'});
         }
 
         this.setState({
@@ -37,6 +42,18 @@ class friends extends Component {
         return 42;
     };
 
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        })
+    };
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to={'/Chat'}/>
+        }
+    };
+
     render() {
         return (
 
@@ -44,12 +61,15 @@ class friends extends Component {
                 <h2><b>FRIENDS</b></h2>
                 {this.state.friendList.map((friend) => {
                     return (
-                        <div key={friend} className="Friend">
+                        // {renderRedirect()}
+                        <div key={friend.name} className="Friend" onClick={() => this.setRedirect()}>
+                            {this.renderRedirect()}
                             <div className="friend-name">
-                                {friend}
+                                {friend.name}
                             </div>
                             <div className="friend-status">
-                                {friend.status}         {/*might change to colored dots to represent status*/}
+                                {/*might change to colored dots to represent status*/}
+                                {friend.status}
                             </div>
                             <hr/>
                         </div>

@@ -122,7 +122,6 @@ class Login extends Component {
                   <button onClick={() => {
                       User.name = '';
                       this.props.history.go(Login);
-                      // this.props.history.
                   }}>Logout</button>
               </div>
             );

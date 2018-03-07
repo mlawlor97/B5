@@ -44,8 +44,8 @@ header {
 
 .App {
     text-align: center;
-    background-color: darkslategrey;
-    height: 3000px; /*dummy number*/
+    background-color: #3f6d50;
+    height: 1500px; /*dummy number*/
     /*padding-bottom: 5%;*/
 }
 
@@ -58,7 +58,7 @@ header {
 
 .Friends-list {
     position: absolute;
-    background-color: darkgrey;
+    background-color: #f0f0f0;
     width: 18%;
     left: 81%;
     right: 1%;
@@ -69,7 +69,7 @@ header {
 
 .Game-list {
     position: absolute;
-    background-color: dimgray;
+    background-color: #f0f0f0;
     left: 1%;
     width: 79%;
     border: 2px solid black;
@@ -97,7 +97,7 @@ header {
 
 .Friend {
     position: relative;
-    background-color: slategray;
+    background-color: #61DAFB;
     height: 4em;
 }
 
