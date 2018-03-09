@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 
 class games extends Component {
 
@@ -20,8 +20,10 @@ class games extends Component {
 
     fetchGames = async () => {
         let gamesList = [];
+        let ip = 'proj-319-B5.cs.iastate.edu';
+        // let ip = '10.36.19.28';
 
-        const response = await fetch('http://proj-319-B5.cs.iastate.edu:3000/api/games', {
+        const response = await fetch('http://' + ip + ':3000/api/games', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +48,7 @@ class games extends Component {
         this.setState({
             redirect: true,
             page: '/' + name
-        })
+        });
     };
 
     renderRedirect = () => {

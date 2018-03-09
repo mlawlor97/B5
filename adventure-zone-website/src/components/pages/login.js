@@ -23,26 +23,22 @@ class Login extends Component {
             alert('Invalid Username or Password');
             return 24;
         }
+
+        let ip = 'proj-319-B5.cs.iastate.edu';
+        // let ip = '10.36.19.28';
+
         let response;
-        if (reg) {
-            response = await fetch('http://proj-319-B5.cs.iastate.edu:3000/users/new', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-        } else {
-            response = await fetch('http://proj-319-B5.cs.iastate.edu:3000/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-        }
+        let url = 'http://' + ip + ':3000/users';
+        if (reg) { url += '/new'; }
+
+        response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
 
         if (response.status === 500) {
             if (reg) {
@@ -63,7 +59,7 @@ class Login extends Component {
             alert(message['message']);
             if (message['message'] === 'you are logged in') {
                 User.name = data.username;
-                this.props.history.push(Login);
+                this.props.history.push('/');
             }
         }
     };
