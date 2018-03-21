@@ -13,6 +13,7 @@ import Login from './components/pages/login';
 import Chat from './components/pages/chat';
 import Checkers from './Games/Checkers';
 import Solitaire from './Games/Solitaire'
+import Game from './Games/tictactoe'
 //includes
 import './Assets/css/default.min.css';
 
@@ -29,6 +30,7 @@ class App extends Component {
                 <Route exact path='/Chat' component={Chat} />
                 <Route exact path='/Checkers' component={Checkers} />
                 <Route exact path='/Solitaire' componenet={Solitaire} />
+                <Route exact path='/TicTacToe' componenet={Game} />
 
                 <Footer/>
             </div>
