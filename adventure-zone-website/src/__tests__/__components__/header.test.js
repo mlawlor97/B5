@@ -2,9 +2,9 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Link } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom';
-import homePage from '../components/pages/homePage';
-import Login from '../components/pages/login';
-import Contact from '../components/pages/contact';
+import homePage from '../../components/pages/homePage';
+import Login from '../../components/pages/login';
+import Contact from '../../components/pages/contact';
 
 it('Homepage matches', () => {
     const Homepage = renderer.create(
