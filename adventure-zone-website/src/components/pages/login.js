@@ -25,7 +25,7 @@ class Login extends Component {
         }
 
         let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.36.19.28';
+        // let ip = '10.26.75.147';
 
         let response;
         let url = 'http://' + ip + ':3000/users';
@@ -61,6 +61,38 @@ class Login extends Component {
                 User.name = data.username;
                 this.props.history.push('/');
             }
+        }
+    };
+
+    tryLogout = async (data) => {
+        let ip = 'proj-319-B5.cs.iastate.edu';
+        // let ip = '10.26.75.147';
+
+        let response;
+        let url = 'http://' + ip + ':3000/api/logout';
+
+        response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({'username': data})
+        });
+
+        if (response.status === 500) {
+            alert(data.username + ' is wrong');
+            return -1;
+        }
+
+        if(!response.ok) {
+            console.error(response.status);
+            throw Error(response.status);
+        }
+
+        if (response.status === 200) {
+            const message = await response.json();
+            alert(message['message']);
         }
     };
 
@@ -108,7 +140,7 @@ class Login extends Component {
                                          onChange={this.onFieldChange('password').bind(this)}
                                          placeholder={'password'}/>
                     </label><br/>
-                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                    <button type="submit" onClick={this.handleSubmit}>Login</button>
                     <button type="submit" onClick={this.handleRegister}>Register</button>
                 </form>
             );
@@ -116,8 +148,9 @@ class Login extends Component {
             return (
               <div>
                   <button onClick={() => {
+                      this.tryLogout(User.name);
                       User.name = '';
-                      this.props.history.go(Login);
+                      // this.props.history.go(Login);
                   }}>Logout</button>
               </div>
             );

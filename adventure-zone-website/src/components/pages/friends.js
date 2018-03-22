@@ -22,7 +22,7 @@ class friends extends Component {
         let friendsList = [];
 
         let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.36.19.28';
+        // let ip = '10.26.75.147';
 
         const response = await fetch('http://' + ip + ':3000/api/friends?username=' + User.name, {
             method: 'GET',
@@ -38,8 +38,14 @@ class friends extends Component {
 
         let friendNames = JSON.parse(JSON.stringify(await message));
         for (let i = 0; i < friendNames.length; i++) {
-            // friendsList.push({name: friendNames[i]['Friend'], status: friendNames[i]['isActv']});
-            friendsList.push({name: friendNames[i]['Friend'], status: 'offline'});
+            var stat = ''
+            if (friendNames[i]['isActv'] === 1) {
+                stat = 'no life'
+            } else {
+                stat = 'no fun'
+            }
+            friendsList.push({name: friendNames[i]['Friend'], status: stat});
+            // friendsList.push({name: friendNames[i]['Friend'], status: 'offline'});
         }
 
         this.setState({
@@ -53,7 +59,7 @@ class friends extends Component {
         if (User.name === '' || this.state.friend === '') { return; }
 
         let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.36.19.28';
+        // let ip = '10.26.75.147';
 
         let data = {
             username: User.name,

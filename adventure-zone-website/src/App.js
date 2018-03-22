@@ -12,7 +12,8 @@ import Contact from './components/pages/contact';
 import Login from './components/pages/login';
 import Chat from './components/pages/chat';
 import Checkers from './Games/Checkers';
-import Solitaire from './Games/Solitaire'
+import Solitaire from './Games/Solitaire';
+
 //includes
 import './Assets/css/default.min.css';
 
