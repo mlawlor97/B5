@@ -19,7 +19,7 @@ class Solitaire extends Component {
         let ip = 'proj-319-B5.cs.iastate.edu';
         // let ip = '10.36.19.28';
 
-        const response = await fetch('http://' + ip + ':3000/api/leaderboard?game=Solitaire', {
+        const response = await fetch('http://' + ip + ':3000/api/leaderboard?game=Checkers', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

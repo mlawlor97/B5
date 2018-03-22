@@ -1,149 +1,132 @@
+/*
+ * Tic Tac Toe
+ *
+ * A Tic Tac Toe game in HTML/JavaScript/CSS.
+ *
+ * @author: Vasanth Krishnamoorthy
+ */
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
-function Square(props) {
-    return (
-        <button className="square" onClick={props.onClick}>
-            {props.value}
-        </button>
-    );
-}
+var N_SIZE = 3,
+    EMPTY = "&nbsp;",
+    boxes = [],
+    turn = "X",
+    score,
+    moves;
 
-class Board extends React.Component {
-    renderSquare(i) {
-        return (
-            <Square
-                value={this.props.squares[i]}
-                onClick={() => this.props.onClick(i)}
-            />
-        );
+/*
+* Initializes the Tic Tac Toe board and starts the game.
+*/
+function init() {
+    var board = document.createElement('table');
+    board.setAttribute("border", 1);
+    board.setAttribute("cellspacing", 0);
+
+    var identifier = 1;
+    for (var i = 0; i < N_SIZE; i++) {
+        var row = document.createElement('tr');
+        board.appendChild(row);
+        for (var j = 0; j < N_SIZE; j++) {
+            var cell = document.createElement('td');
+            cell.setAttribute('height', 120);
+            cell.setAttribute('width', 120);
+            cell.setAttribute('align', 'center');
+            cell.setAttribute('valign', 'center');
+            cell.classList.add('col' + j, 'row' + i);
+            if (i == j) {
+                cell.classList.add('diagonal0');
+            }
+            if (j == N_SIZE - i - 1) {
+                cell.classList.add('diagonal1');
+            }
+            cell.identifier = identifier;
+            cell.addEventListener("click", set);
+            row.appendChild(cell);
+            boxes.push(cell);
+            identifier += identifier;
+        }
     }
 
-    render() {
+    document.getElementById("tictactoe").appendChild(board);
+    startNewGame();
+}
+
+/*
+ * New game
+ */
+function startNewGame() {
+    score = {
+        "X": 0,
+        "O": 0
+    };
+    moves = 0;
+    turn = "X";
+    boxes.forEach(function (square) {
+        square.innerHTML = EMPTY;
+    });
+}
+
+/*
+ * Check if a win or not
+ */
+function win(clicked) {
+    // Get all cell classes
+    var memberOf = clicked.className.split(/\s+/);
+    for (var i = 0; i < memberOf.length; i++) {
+        var testClass = '.' + memberOf[i];
+        var items = contains('#tictactoe ' + testClass, turn);
+        // winning condition: turn == N_SIZE
+        if (items.length == N_SIZE) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function contains(selector, text) {
+    var elements = document.querySelectorAll(selector);
+    return [].filter.call(elements, function (element) {
+        return RegExp(text).test(element.textContent);
+    });
+}
+
+/*
+ * Sets clicked square and also updates the turn.
+ */
+function set() {
+    if (this.innerHTML !== EMPTY) {
+        return;
+    }
+    this.innerHTML = turn;
+    moves += 1;
+    score[turn] += this.identifier;
+    if (win(this)) {
+        alert('Winner: Player ' + turn);
+        startNewGame();
+    } else if (moves === N_SIZE * N_SIZE) {
+        alert("Draw");
+        startNewGame();
+    } else {
+        turn = turn === "X" ? "O" : "X";
+        document.getElementById('turn').textContent = 'Player ' + turn;
+    }
+}
+
+function meme() {
+    console.log("we out here");
+}
+
+console.log("we out here");
+
+class TicTacToe extends Component {
+     render() {
         return (
-            <div>
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+            <div className='Tictactoe'>
+                {this.init()}
+                {meme()}
+                <h1> we out here! </h1>
             </div>
         );
-    }
+    }  
 }
-
-class Game extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            history: [
-                {
-                    squares: Array(9).fill(null)
-                }
-            ],
-            stepNumber: 0,
-            xIsNext: true
-        };
-    }
-
-    handleClick(i) {
-        const history = this.state.history.slice(0, this.state.stepNumber + 1);
-        const current = history[history.length - 1];
-        const squares = current.squares.slice();
-        if (calculateWinner(squares) || squares[i]) {
-            return;
-        }
-        squares[i] = this.state.xIsNext ? "X" : "O";
-        this.setState({
-            history: history.concat([
-                {
-                    squares: squares
-                }
-            ]),
-            stepNumber: history.length,
-            xIsNext: !this.state.xIsNext
-        });
-    }
-
-    jumpTo(step) {
-        this.setState({
-            stepNumber: step,
-            xIsNext: (step % 2) === 0
-        });
-    }
-
-    render() {
-        const history = this.state.history;
-        const current = history[this.state.stepNumber];
-        const winner = calculateWinner(current.squares);
-
-        const moves = history.map((step, move) => {
-            const desc = move ?
-                'Go to move #' + move :
-                'Go to game start';
-            return (
-                <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
-                </li>
-            );
-        });
-
-        let status;
-        if (winner) {
-            status = "Winner: " + winner;
-        } else {
-            status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-        }
-
-        return (
-            <div className="game">
-                <div className="game-board">
-                    <Board
-                        squares={current.squares}
-                        onClick={i => this.handleClick(i)}
-                    />
-                </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <ol>{moves}</ol>
-                </div>
-            </div>
-        );
-    }
-}
-
-// ========================================
-
-ReactDOM.render(<Game />, document.getElementById("root"));
-
-function calculateWinner(squares) {
-    const lines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ];
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
-        }
-    }
-    return null;
-}
-
-export default Game;
+export default TicTacToe;
