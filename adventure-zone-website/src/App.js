@@ -31,7 +31,7 @@ class App extends Component {
                 <Route exact path='/Chat' component={Chat} />
                 <Route exact path='/Checkers' component={Checkers} />
                 <Route exact path='/Solitaire' componenet={Solitaire} />
-                <Route exact path='/TicTacToe' componenet={TicTacToe} />
+                <Route exact path='/Tictactoe' componenet={TicTacToe} />
 
                 <Footer/>
             </div>

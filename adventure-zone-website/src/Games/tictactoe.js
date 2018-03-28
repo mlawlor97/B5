@@ -21,6 +21,7 @@ function init() {
     var board = document.createElement('table');
     board.setAttribute("border", 1);
     board.setAttribute("cellspacing", 0);
+    alert("I am here...");
 
     var identifier = 1;
     for (var i = 0; i < N_SIZE; i++) {
@@ -108,23 +109,26 @@ function set() {
         startNewGame();
     } else {
         turn = turn === "X" ? "O" : "X";
-        document.getElementById('turn').textContent = 'Player ' + turn;
+        //document.getElementById('turn').textContent = 'Player ' + turn;
     }
 }
 
 function meme() {
     console.log("we out here");
+    alert("we out here");
 }
 
-console.log("we out here");
-
 class TicTacToe extends Component {
+    componentDidMount(){
+        console.log("in the componentDidMount function")
+        init()
+    }
      render() {
-        return (
+         console.log("in the render function")
+         return (
             <div className='Tictactoe'>
-                {this.init()}
+                <div id="tictactoe"></div>
                 {meme()}
-                <h1> we out here! </h1>
             </div>
         );
     }  
