@@ -115,7 +115,7 @@ function set() {
 
 function meme() {
     console.log("we out here");
-    alert("we out here");
+    alert("we out here!");
 }
 
 class TicTacToe extends Component {

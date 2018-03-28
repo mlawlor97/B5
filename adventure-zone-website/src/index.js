@@ -5,5 +5,5 @@ import App from './App';
 import TicTacToe from './Games/tictactoe';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<TicTacToe />, document.getElementById('root'));
 registerServiceWorker();
