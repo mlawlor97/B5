@@ -10,6 +10,7 @@ import Footer from './components/footerComponenet/footer';
 import Homepage from './components/pages/homePage';
 import Contact from './components/pages/contact';
 import Login from './components/pages/login';
+import pong from './components/pages/pong';
 //includes
 import './Assets/css/default.min.css';
 
@@ -24,6 +25,7 @@ class App extends Component {
                 <Route exact path='/Homepage' component={Homepage} />
                 <Route exact path='/Contact' component={Contact} />
                 <Route exact path='/solitaire' component={} />
+                <Route exact path='/pong' component={pong} />
 
 
                 <Footer/>
