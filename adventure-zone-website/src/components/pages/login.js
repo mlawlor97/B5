@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import fetch from 'node-fetch';
 import {User} from '../UserFile';
-import {Redirect, withRouter} from 'react-router-dom';
 
 class Login extends Component {
 
@@ -59,7 +58,7 @@ class Login extends Component {
             alert(message['message']);
             if (message['message'] === 'you are logged in') {
                 User.name = data.username;
-                this.props.history.push('/');
+                this.forceUpdate();
             }
         }
     };
@@ -150,7 +149,7 @@ class Login extends Component {
                   <button onClick={() => {
                       this.tryLogout(User.name);
                       User.name = '';
-                      // this.props.history.go(Login);
+                      this.forceUpdate();
                   }}>Logout</button>
               </div>
             );

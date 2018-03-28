@@ -9,16 +9,28 @@ class friends extends Component {
         super();
         this.fetchFriends();
         this.state.redirect = false;
+
+        // setInterval(function() {this.fetchFriends()}, 1000);
     }
 
     state = {
         friendList: [],
         redirect: false,
         friend: ''
-    }
+    };
 
     fetchFriends = async () => {
-        if (User.name === '') { return; }
+        if (User.name === '') {
+            return;
+        }
+
+        // var frefresh = setInterval(function () {
+        //     this.fetchFriends();
+        //     clearInterval(frefresh)
+        // }, 10000);
+        // // setTimeout(this.fetchFriends(), 10000);
+        // // setTimeout(this.forceUpdate(), 10000);
+
         let friendsList = [];
 
         let ip = 'proj-319-B5.cs.iastate.edu';
@@ -38,25 +50,26 @@ class friends extends Component {
 
         let friendNames = JSON.parse(JSON.stringify(await message));
         for (let i = 0; i < friendNames.length; i++) {
-            var stat = ''
+            var stat = '';
             if (friendNames[i]['isActv'] === 1) {
-                stat = 'no life'
+                stat = 'offline'
             } else {
-                stat = 'no fun'
+                stat = 'online'
             }
             friendsList.push({name: friendNames[i]['Friend'], status: stat});
-            // friendsList.push({name: friendNames[i]['Friend'], status: 'offline'});
         }
 
         this.setState({
             friendList: friendsList
-        })
+        });
 
         return 42;
     };
 
     addFriend = async () => {
-        if (User.name === '' || this.state.friend === '') { return; }
+        if (User.name === '' || this.state.friend === '') {
+            return;
+        }
 
         let ip = 'proj-319-B5.cs.iastate.edu';
         // let ip = '10.26.75.147';
@@ -80,6 +93,9 @@ class friends extends Component {
         const message = await response.json();
         alert(JSON.stringify(message));
 
+        this.fetchFriends();
+        this.forceUpdate();
+
         return 42;
     };
 
@@ -101,10 +117,6 @@ class friends extends Component {
         }
     };
 
-    // renderPopup = () => {
-    //
-    // };
-
     render() {
         return (
 
@@ -116,7 +128,6 @@ class friends extends Component {
                        onChange={this.onFieldChange('friend').bind(this)}/>
                 {this.state.friendList.map((friend) => {
                     return (
-                        // {renderRedirect()}
                         <div key={friend.name} className="Friend" onClick={() => this.setRedirect()}>
                             {this.renderRedirect()}
                             <div className="friend-name">

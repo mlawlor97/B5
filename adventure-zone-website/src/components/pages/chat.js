@@ -23,20 +23,16 @@ class Chat extends React.Component {
 
     sendMessage(info) {
         //send message through socket
-        Messages.mesList({
+        Messages.mesList.push({
             user: User.name,
             message: info.message,
             time: info.time
         });
-        this.addText({
-            user: User.name,
-            message: info.message,
-            time: info.time
-        });
+
+        this.forceUpdate();
     }
 
-
-    addText(info) {
+     addText(info) {
 
         return (
             <div>
@@ -73,27 +69,32 @@ class Chat extends React.Component {
         }
     }
 
-    renderMessages(index) {
-        if (Messages.mesList[index].user === User.name) {
-            return (<div>{this.addText(Messages.mesList[index])}</div>);
-        } else {
-            return (<div>{this.addResponse(Messages.mesList[index])}</div>);
+    renderMessages() {
+        var i = 0;
+        var stuff = [];
+        for (i = 0; i < Messages.mesList.length; i++) {
+            var mes = Messages.mesList[i];
+            if (mes.user === User.name) {
+                stuff.push(<div>{this.addText(mes)}</div>);
+            } else {
+                stuff.push(<div>{this.addResponse(mes)}</div>);
+            }
         }
+        return stuff;
     }
 
     render() {
         return (
             <div>
-                {/*{this.addText({message: "TEST", time: this.getTime(Date.now())})}*/}
-                {/*{this.addResponse({message: "RESPONSE", time: this.getTime(Date.now())})}*/}
-                {this.renderMessages(0)}
+                {this.renderMessages()}
 
                 <div class="container">
                     <span>
-                        <input type="text" name="message" placeholder="message"/>
+                        <input type="text" name="message" placeholder="message"
+                               onChange={this.onFieldChange('message').bind(this)}/>
                         <input type="submit" value="Submit"
-                               onChange={this.onFieldChange('message').bind(this)}
-                               onClick={() => this.sendMessage(this.state.message, this.getTime(Date.now()))}/>
+                               onClick={() => this.sendMessage
+                               ({message: this.state.message, time: this.getTime(Date.now())})}/>
                     </span>
                 </div>
 
