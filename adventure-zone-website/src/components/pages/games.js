@@ -53,7 +53,7 @@ class games extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to={this.state.page}/>
+            return <Redirect to={this.state.page.replace(/\s/g, '')}/>
         }
     };
 

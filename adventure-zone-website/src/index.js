@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import TicTacToe from './Games/tictactoe';
 import registerServiceWorker from './registerServiceWorker';
+//import Pong from './Games/Pong';
 
-ReactDOM.render(<TicTacToe />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
