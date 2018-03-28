@@ -8,9 +8,9 @@ class Header extends Component {
 
     getValue() {
         if (User.name === '') {
-            return <div>Login Page</div>;
+            return <div>Login</div>;
         }
-        return <div>Logout Page</div>;
+        return <div>Logout</div>;
     }
 
     render() {
@@ -23,7 +23,7 @@ class Header extends Component {
                         Welcome: {User.name}</h2>
                     <nav className="App-links">
                         <ul>
-                        <li><Link to="/Homepage" hidden={User.name === ''}>Home</Link></li>
+                        <li><Link to="/Homepage">Home</Link></li>
                         <li><Link to="/">{this.getValue()}</Link></li>
                         <li><Link to="/Contact" >Contact</Link></li>
                         </ul>
