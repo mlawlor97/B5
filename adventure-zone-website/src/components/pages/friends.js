@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
 import fetch from 'node-fetch';
 import {User} from '../UserFile';
+import {Messages} from "../Messages";
 import {Redirect} from 'react-router-dom';
 
 class friends extends Component {
+
+    componentDidMount() {
+        setInterval(() => {
+            this.fetchFriends();
+            this.forceUpdate();
+        }, 30000);
+    }
 
     constructor() {
         super();
         this.fetchFriends();
         this.state.redirect = false;
-
-        // setInterval(function() {this.fetchFriends()}, 1000);
     }
 
     state = {
@@ -24,19 +30,9 @@ class friends extends Component {
             return;
         }
 
-        // var frefresh = setInterval(function () {
-        //     this.fetchFriends();
-        //     clearInterval(frefresh)
-        // }, 10000);
-        // // setTimeout(this.fetchFriends(), 10000);
-        // // setTimeout(this.forceUpdate(), 10000);
-
         let friendsList = [];
 
-        let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.26.75.147';
-
-        const response = await fetch('http://' + ip + ':3000/api/friends?username=' + User.name, {
+        const response = await fetch('http://' + User.getip + ':3000/api/friends?username=' + User.name, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,9 +48,9 @@ class friends extends Component {
         for (let i = 0; i < friendNames.length; i++) {
             var stat = '';
             if (friendNames[i]['isActv'] === 1) {
-                stat = 'offline'
-            } else {
                 stat = 'online'
+            } else {
+                stat = 'offline'
             }
             friendsList.push({name: friendNames[i]['Friend'], status: stat});
         }
@@ -66,20 +62,31 @@ class friends extends Component {
         return 42;
     };
 
+    deleteFriend = async (props) => {
+
+        const response = await fetch('http://' + User.getip + ':3000/api/friends', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({username: User.name, friend: props})
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
     addFriend = async () => {
         if (User.name === '' || this.state.friend === '') {
             return;
         }
-
-        let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.26.75.147';
 
         let data = {
             username: User.name,
             friend: this.state.friend
         };
 
-        const response = await fetch('http://' + ip + ':3000/api/friends', {
+        const response = await fetch('http://' + User.getip + ':3000/api/friends', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +100,6 @@ class friends extends Component {
         const message = await response.json();
         alert(JSON.stringify(message));
 
-        this.fetchFriends();
         this.forceUpdate();
 
         return 42;
@@ -128,7 +134,11 @@ class friends extends Component {
                        onChange={this.onFieldChange('friend').bind(this)}/>
                 {this.state.friendList.map((friend) => {
                     return (
-                        <div key={friend.name} className="Friend" onClick={() => this.setRedirect()}>
+                        <div key={friend.name} className="Friend" onClick={() => {
+                            Messages.other = friend.name;
+                            this.setRedirect();
+                        }}>
+                            {/*<button onClick={() => {this.deleteFriend(friend.name)}}>-</button>*/}
                             {this.renderRedirect()}
                             <div className="friend-name">
                                 {friend.name}

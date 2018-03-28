@@ -23,11 +23,8 @@ class Login extends Component {
             return 24;
         }
 
-        let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.26.75.147';
-
         let response;
-        let url = 'http://' + ip + ':3000/users';
+        let url = 'http://' + User.getip + ':3000/users';
         if (reg) { url += '/new'; }
 
         response = await fetch(url, {
@@ -64,11 +61,8 @@ class Login extends Component {
     };
 
     tryLogout = async (data) => {
-        let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.26.75.147';
-
         let response;
-        let url = 'http://' + ip + ':3000/api/logout';
+        let url = 'http://' + User.getip + ':3000/api/logout';
 
         response = await fetch(url, {
             method: 'PUT',

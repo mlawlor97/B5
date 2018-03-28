@@ -1,10 +1,9 @@
+import {User} from "../components/UserFile";
+
 export default async function getLeaders(game) {
     let theBest = [];
 
-    let ip = 'proj-319-B5.cs.iastate.edu';
-    // let ip = '10.26.75.147';
-
-    const response = await fetch('http://' + ip + ':3000/api/leaderboard?game=' + game, {
+    const response = await fetch('http://' + User.getip + ':3000/api/leaderboard?game=' + game, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

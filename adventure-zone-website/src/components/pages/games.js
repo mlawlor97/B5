@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {User} from "../UserFile";
 import {Redirect, withRouter} from 'react-router-dom';
 
 class games extends Component {
@@ -20,10 +21,8 @@ class games extends Component {
 
     fetchGames = async () => {
         let gamesList = [];
-        let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.26.75.147';
 
-        const response = await fetch('http://' + ip + ':3000/api/games', {
+        const response = await fetch('http://' + User.getip + ':3000/api/games', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,7 +52,7 @@ class games extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to={this.state.page}/>
+            return <Redirect to={this.state.page.replace(/\s/g, '')}/>
         }
     };
 

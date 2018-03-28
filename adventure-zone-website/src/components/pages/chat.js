@@ -5,16 +5,41 @@ import io from 'socket.io-client';
 
 class Chat extends React.Component {
 
+    componentDidMount() {
+        setInterval(() => {
+            this.forceUpdate();
+        }, 2000);
+    }
+
+    componentWillUnmount() {
+        Messages.clear();
+        this.socket.disconnect();
+    }
+
     constructor(props) {
         super(props);
         this.socket = null;
 
+        try {
+            this.socket = io('http://' + User.getip + ':3000');
+            this.socket.connect();
+        } catch (e) {
+            // alert("Chat is not currently working");
+        }
 
-        // try {
-        //     alert(this.socket = io());
-        // } catch (e) {
-        //     alert("Chat is not currently working");
-        // }
+        this.socket.emit('add user', {
+            username: User.name,
+            otheruser: Messages.other
+        });
+
+        this.socket.on('new message', function (res) {
+            // alert(JSON.stringify(res));
+            Messages.mesList.push({
+                user: res.username,
+                message: res.message.message,
+                time: res.message.time
+            });
+        });
     }
 
     state = {
@@ -23,6 +48,11 @@ class Chat extends React.Component {
 
     sendMessage(info) {
         //send message through socket
+        this.socket.emit('new message', {
+            message: info.message,
+            time: info.time
+        });
+
         Messages.mesList.push({
             user: User.name,
             message: info.message,
@@ -47,9 +77,9 @@ class Chat extends React.Component {
     addResponse(info) {
         return (
             <div>
-                <div class="container darker">
+                <div className="container darker">
                     <p align="left">{info.user + ": " + info.message}</p>
-                    <span class="time-left">{info.time}</span>
+                    <span className="time-left">{info.time}</span>
                 </div>
             </div>
         );
@@ -88,7 +118,7 @@ class Chat extends React.Component {
             <div>
                 {this.renderMessages()}
 
-                <div class="container">
+                <div className="container">
                     <span>
                         <input type="text" name="message" placeholder="message"
                                onChange={this.onFieldChange('message').bind(this)}/>

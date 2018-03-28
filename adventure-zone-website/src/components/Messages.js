@@ -1,17 +1,24 @@
 var messages = {
 
-    messageList: [{user: 'Scooby',
-                    message: 'Ruh-roh',
-                    time: '5:42pm'},
-        {user: 'ckoco1',
-        message: 'Nope',
-        time: '6:15pm'}],
+    otherUser: "",
+    messageList: [],
 
     get mesList() {
         return this.messageList;
     },
     set mesList(props) {
         this.messageList = props;
+    },
+
+    get other() {
+        return this.otherUser;
+    },
+    set other(props) {
+        this.otherUser = props;
+    },
+
+    clear() {
+        this.messageList = [];
     }
 };
 

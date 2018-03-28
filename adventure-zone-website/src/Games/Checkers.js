@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {User} from "../components/UserFile";
 
 class Checkers extends Component {
 
@@ -16,10 +17,7 @@ class Checkers extends Component {
     getLeaders = async () => {
         let theBest = [];
 
-        let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.26.75.147';
-
-        const response = await fetch('http://' + ip + ':3000/api/leaderboard?game=Checkers', {
+        const response = await fetch('http://' + User.getip + ':3000/api/leaderboard?game=Checkers', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +52,6 @@ class Checkers extends Component {
                                 {user.name}
                             </div>
                             <div className="friend-status">
-                                {/*might change to colored dots to represent status*/}
                                 {user.score}
                             </div>
                             <hr/>
