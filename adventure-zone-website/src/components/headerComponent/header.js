@@ -3,8 +3,13 @@ import {
     Link
 } from 'react-router-dom';
 import {User} from '../UserFile';
+import Login from '../pages/login';
 
 class Header extends Component {
+
+    componentWillUnmount() {
+        Login.tryLogout(User.name);
+    }
 
     getValue() {
         if (User.name === '') {

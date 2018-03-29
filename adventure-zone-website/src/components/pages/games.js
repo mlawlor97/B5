@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {User} from "../UserFile";
-import {Redirect, withRouter} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 class games extends Component {
 

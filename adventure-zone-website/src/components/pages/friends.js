@@ -7,16 +7,21 @@ import {Redirect} from 'react-router-dom';
 class friends extends Component {
 
     componentDidMount() {
-        setInterval(() => {
+        this.timer = setInterval(() => {
             this.fetchFriends();
             this.forceUpdate();
         }, 30000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
     }
 
     constructor() {
         super();
         this.fetchFriends();
         this.state.redirect = false;
+        this.changeFriends = false;
     }
 
     state = {
@@ -74,7 +79,12 @@ class friends extends Component {
         }).catch(function (error) {
             console.log(error);
         });
-    }
+
+        const message = await response.json();
+        console.log(JSON.stringify(message));
+
+        this.fetchFriends();
+    };
 
     addFriend = async () => {
         if (User.name === '' || this.state.friend === '') {
@@ -98,9 +108,9 @@ class friends extends Component {
         });
 
         const message = await response.json();
-        alert(JSON.stringify(message));
+        console.log(JSON.stringify(message));
 
-        this.forceUpdate();
+        this.fetchFriends();
 
         return 42;
     };
@@ -123,35 +133,70 @@ class friends extends Component {
         }
     };
 
+    getEditButton() {
+        if (this.changeFriends) {
+            return (<div>DONE</div>);
+        }
+        return (<div>EDIT</div>)
+    }
+
+    getFriendTile(friend) {
+        if (!this.changeFriends) {
+            return (<div>
+                {/*<button onClick={() => {this.deleteFriend(friend.name)}}>-</button>*/}
+                {this.renderRedirect()}
+                <div className="friend-name">
+                    {friend.name}
+                </div>
+                <div className="friend-status">
+                    {/*might change to colored dots to represent status*/}
+                    {friend.status}
+                </div>
+                <hr/>
+            </div>)
+        }
+
+        return (<div>
+            {/*<button onClick={() => {this.deleteFriend(friend.name)}}>-</button>*/}
+            {/*{this.renderRedirect()}*/}
+            <div className="friend-name">
+                {friend.name}
+            </div>
+            <div className="friend-status">
+                {/*might change to colored dots to represent status*/}
+                <button onClick={() => this.deleteFriend(friend.name)}>-</button>
+            </div>
+            <hr/>
+        </div>)
+    }
+
+
     render() {
         return (
 
             <div className="Friends-list">
                 <h2><b>FRIENDS</b>
-                    <button onClick={() => this.addFriend()}>+</button>
                 </h2>
                 <input type='text' placeholder={'Look for:'} name={'friend'}
                        onChange={this.onFieldChange('friend').bind(this)}/>
+                <button onClick={() => this.addFriend()}>+</button>
                 {this.state.friendList.map((friend) => {
                     return (
                         <div key={friend.name} className="Friend" onClick={() => {
                             Messages.other = friend.name;
-                            this.setRedirect();
+                            if (!this.changeFriends) {this.setRedirect();}
                         }}>
-                            {/*<button onClick={() => {this.deleteFriend(friend.name)}}>-</button>*/}
-                            {this.renderRedirect()}
-                            <div className="friend-name">
-                                {friend.name}
-                            </div>
-                            <div className="friend-status">
-                                {/*might change to colored dots to represent status*/}
-                                {friend.status}
-                            </div>
-                            <hr/>
+                            {this.getFriendTile(friend)}
                         </div>
                     );
                 })}
                 <hr/>
+                <button onClick={() => {
+                    this.changeFriends = !this.changeFriends;
+                    this.forceUpdate();
+                }}>
+                    {this.getEditButton()}
+                </button>
             </div>
 
         );

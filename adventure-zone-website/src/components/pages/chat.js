@@ -35,7 +35,7 @@ class Chat extends React.Component {
         this.socket.on('new message', function (res) {
             // alert(JSON.stringify(res));
             Messages.mesList.push({
-                user: res.username,
+                user: Messages.other,
                 message: res.message.message,
                 time: res.message.time
             });
@@ -63,12 +63,11 @@ class Chat extends React.Component {
     }
 
      addText(info) {
-
         return (
             <div>
-                <div class="container">
+                <div className="container">
                     <p align="left">{info.user + ": " + info.message}</p>
-                    <span class="time-right">{info.time}</span>
+                    <span className="time-right">{info.time}</span>
                 </div>
             </div>
         );
@@ -100,7 +99,7 @@ class Chat extends React.Component {
     }
 
     renderMessages() {
-        var i = 0;
+        var i;
         var stuff = [];
         for (i = 0; i < Messages.mesList.length; i++) {
             var mes = Messages.mesList[i];
