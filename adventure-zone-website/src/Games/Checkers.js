@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {User} from "../components/UserFile";
 
 // /*=========variabile globale=========================*/
 

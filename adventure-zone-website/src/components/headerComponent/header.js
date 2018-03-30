@@ -3,8 +3,20 @@ import {
     Link
 } from 'react-router-dom';
 import {User} from '../UserFile';
+import Login from '../pages/login';
 
 class Header extends Component {
+
+    componentWillUnmount() {
+        Login.tryLogout(User.name);
+    }
+
+    getValue() {
+        if (User.name === '') {
+            return <div>Login</div>;
+        }
+        return <div>Logout</div>;
+    }
 
     render() {
         return (
@@ -17,8 +29,8 @@ class Header extends Component {
                     <nav className="App-links">
                         <ul>
                         <li><Link to="/Homepage">Home</Link></li>
-                        <li><Link to="/">Login</Link></li>
-                        <li><Link to="/Contact">Contact</Link></li>
+                        <li><Link to="/">{this.getValue()}</Link></li>
+                        <li><Link to="/Contact" >Contact</Link></li>
                         </ul>
                     </nav>
                 </span>

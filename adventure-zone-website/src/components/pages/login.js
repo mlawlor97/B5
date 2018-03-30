@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import fetch from 'node-fetch';
 import {User} from '../UserFile';
-import {Redirect, withRouter} from 'react-router-dom';
 
 class Login extends Component {
 
@@ -24,11 +23,8 @@ class Login extends Component {
             return 24;
         }
 
-        let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.36.19.28';
-
         let response;
-        let url = 'http://' + ip + ':3000/users';
+        let url = 'http://' + User.getip + ':3000/users';
         if (reg) { url += '/new'; }
 
         response = await fetch(url, {
@@ -59,8 +55,37 @@ class Login extends Component {
             alert(message['message']);
             if (message['message'] === 'you are logged in') {
                 User.name = data.username;
-                this.props.history.push('/');
+                this.forceUpdate();
             }
+        }
+    };
+
+    tryLogout = async (data) => {
+        let response;
+        let url = 'http://' + User.getip + ':3000/api/logout';
+
+        response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({'username': data})
+        });
+
+        if (response.status === 500) {
+            alert(data.username + ' is wrong');
+            return -1;
+        }
+
+        if(!response.ok) {
+            console.error(response.status);
+            throw Error(response.status);
+        }
+
+        if (response.status === 200) {
+            const message = await response.json();
+            alert(message['message']);
         }
     };
 
@@ -101,14 +126,14 @@ class Login extends Component {
                     <label>
                         Username: <input type="text" value={this.state.username} name="username"
                                          onChange={this.onFieldChange('username').bind(this)}
-                                         placeholder={'username'}/>
+                                         placeholder={'username'} autoComplete="off" autoCorrect="off"/>
                     </label><br/>
                     <label>
                         Password: <input type="text" value={this.state.password} name="password"
                                          onChange={this.onFieldChange('password').bind(this)}
-                                         placeholder={'password'}/>
+                                         placeholder={'password'} autoComplete="off" autoCorrect="off"/>
                     </label><br/>
-                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                    <button type="submit" onClick={this.handleSubmit}>Login</button>
                     <button type="submit" onClick={this.handleRegister}>Register</button>
                 </form>
             );
@@ -116,8 +141,9 @@ class Login extends Component {
             return (
               <div>
                   <button onClick={() => {
+                      this.tryLogout(User.name);
                       User.name = '';
-                      this.props.history.go(Login);
+                      this.forceUpdate();
                   }}>Logout</button>
               </div>
             );

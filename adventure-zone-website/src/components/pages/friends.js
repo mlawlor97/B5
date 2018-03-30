@@ -1,30 +1,43 @@
 import React, {Component} from 'react';
 import fetch from 'node-fetch';
 import {User} from '../UserFile';
+import {Messages} from "../Messages";
 import {Redirect} from 'react-router-dom';
 
 class friends extends Component {
+
+    componentDidMount() {
+        this.timer = setInterval(() => {
+            this.fetchFriends();
+            this.forceUpdate();
+        }, 30000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
+    }
 
     constructor() {
         super();
         this.fetchFriends();
         this.state.redirect = false;
+        this.changeFriends = false;
     }
 
     state = {
         friendList: [],
         redirect: false,
         friend: ''
-    }
+    };
 
     fetchFriends = async () => {
-        if (User.name === '') { return; }
+        if (User.name === '') {
+            return;
+        }
+
         let friendsList = [];
 
-        let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.36.19.28';
-
-        const response = await fetch('http://' + ip + ':3000/api/friends?username=' + User.name, {
+        const response = await fetch('http://' + User.getip + ':3000/api/friends?username=' + User.name, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,29 +51,52 @@ class friends extends Component {
 
         let friendNames = JSON.parse(JSON.stringify(await message));
         for (let i = 0; i < friendNames.length; i++) {
-            // friendsList.push({name: friendNames[i]['Friend'], status: friendNames[i]['isActv']});
-            friendsList.push({name: friendNames[i]['Friend'], status: 'offline'});
+            var stat = '';
+            if (friendNames[i]['isActv'] === 1) {
+                stat = 'online'
+            } else {
+                stat = 'offline'
+            }
+            friendsList.push({name: friendNames[i]['Friend'], status: stat});
         }
 
         this.setState({
             friendList: friendsList
-        })
+        });
 
         return 42;
     };
 
-    addFriend = async () => {
-        if (User.name === '' || this.state.friend === '') { return; }
+    deleteFriend = async (props) => {
 
-        let ip = 'proj-319-B5.cs.iastate.edu';
-        // let ip = '10.36.19.28';
+        const response = await fetch('http://' + User.getip + ':3000/api/friends', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({username: User.name, friend: props})
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        const message = await response.json();
+        console.log(JSON.stringify(message));
+
+        this.fetchFriends();
+    };
+
+    addFriend = async () => {
+        if (User.name === '' || this.state.friend === '') {
+            return;
+        }
 
         let data = {
             username: User.name,
             friend: this.state.friend
         };
 
-        const response = await fetch('http://' + ip + ':3000/api/friends', {
+        const response = await fetch('http://' + User.getip + ':3000/api/friends', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -72,7 +108,9 @@ class friends extends Component {
         });
 
         const message = await response.json();
-        alert(JSON.stringify(message));
+        console.log(JSON.stringify(message));
+
+        this.fetchFriends();
 
         return 42;
     };
@@ -95,36 +133,81 @@ class friends extends Component {
         }
     };
 
-    // renderPopup = () => {
-    //
-    // };
+    getEditButton() {
+        if (User.name === '') {
+            return (<div></div>);
+        }
+        if (this.changeFriends) {
+            return (<button onClick={() => {
+                this.changeFriends = !this.changeFriends;
+                this.forceUpdate();
+            }}>DONE</button>);
+        }
+        return (<button onClick={() => {
+            this.changeFriends = !this.changeFriends;
+            this.forceUpdate();
+        }}>EDIT</button>);
+    }
+
+    getFriendTile(friend) {
+        if (!this.changeFriends) {
+            return (<div>
+                {/*<button onClick={() => {this.deleteFriend(friend.name)}}>-</button>*/}
+                {this.renderRedirect()}
+                <div className="friend-name">
+                    {friend.name}
+                </div>
+                <div className="friend-status">
+                    {/*might change to colored dots to represent status*/}
+                    {friend.status}
+                </div>
+                <hr/>
+            </div>)
+        }
+
+        return (<div>
+            {/*<button onClick={() => {this.deleteFriend(friend.name)}}>-</button>*/}
+            {/*{this.renderRedirect()}*/}
+            <div className="friend-name">
+                {friend.name}
+            </div>
+            <div className="friend-status">
+                {/*might change to colored dots to represent status*/}
+                <button onClick={() => this.deleteFriend(friend.name)}>-</button>
+            </div>
+            <hr/>
+        </div>)
+    }
+
 
     render() {
         return (
 
             <div className="Friends-list">
                 <h2><b>FRIENDS</b>
-                    <button onClick={() => this.addFriend()}>+</button>
                 </h2>
                 <input type='text' placeholder={'Look for:'} name={'friend'}
-                       onChange={this.onFieldChange('friend').bind(this)}/>
+                       onChange={this.onFieldChange('friend').bind(this)}
+                       autoComplete="off" autoCorrect="off"/>
+                <button onClick={() => this.addFriend()}>+</button>
                 {this.state.friendList.map((friend) => {
                     return (
-                        // {renderRedirect()}
-                        <div key={friend.name} className="Friend" onClick={() => this.setRedirect()}>
-                            {this.renderRedirect()}
-                            <div className="friend-name">
-                                {friend.name}
-                            </div>
-                            <div className="friend-status">
-                                {/*might change to colored dots to represent status*/}
-                                {friend.status}
-                            </div>
-                            <hr/>
+                        <div key={friend.name} className="Friend" onClick={() => {
+                            Messages.other = friend.name;
+                            if (!this.changeFriends) {this.setRedirect();}
+                        }}>
+                            {this.getFriendTile(friend)}
                         </div>
                     );
                 })}
                 <hr/>
+                {this.getEditButton()}
+                {/*<button onClick={() => {*/}
+                    {/*this.changeFriends = !this.changeFriends;*/}
+                    {/*this.forceUpdate();*/}
+                {/*}}>*/}
+                    {/*{this.getEditButton()}*/}
+                {/*</button>*/}
             </div>
 
         );
