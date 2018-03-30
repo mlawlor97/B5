@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {User} from "../components/UserFile";
+// import React, {Component} from 'react';
+// import {User} from "../components/UserFile";
 
 // /*=========variabile globale=========================*/
 
@@ -546,14 +546,135 @@ import {User} from "../components/UserFile";
 //     }
 // }
 
-class Checkers extends Component {
+// class Checkers extends Component {
 //     render() {
 //         return (
-//             <div className="checkers" >
-//                 <div id="check" />
-//             </div>
+//             // <div className="checkers" >
+//             //     <div id="ht">
+//             //         <div className="checker white_checker" style="display:none"> </div>
+//             //         <div className="checker black_checker" style="display:none"> </div>
+
+
+//             //         <div class="square" style="display: none" id="ht"> </div>
+//             //         <div class="black_background" id="black_background"> </div>
+
+//             //         <div class="score" id="score">
+//             //             <br>
+	                    
+//             //             <div class="table" id="table">
+
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+//             //                 <div class="checker white_checker"> </div>
+
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+//             //                 <div class="checker black_checker"> </div>
+
+
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="clear_float"> </div>
+
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="clear_float"> </div>
+
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="clear_float"> </div>
+
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="clear_float"> </div>
+
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="clear_float"> </div>
+
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="clear_float"> </div>
+
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="clear_float"> </div>
+
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="square white_square"> </div>
+//             //                 <div class="square black_square"> </div>
+//             //                 <div class="clear_float"> </div>
+
+//             //             </div>
+//             // </div>
+//             <div className="checkers" />
 //         );
 //     }
-}
+// }
 
-export default Checkers;
+// export default Checkers;
