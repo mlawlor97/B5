@@ -10,7 +10,10 @@ import Footer from './components/footerComponenet/footer';
 import Homepage from './components/pages/homePage';
 import Contact from './components/pages/contact';
 import Login from './components/pages/login';
-import pong from './components/pages/pong';
+import Chat from './components/pages/chat';
+import Checkers from './Games/Checkers';
+import Solitaire from './Games/Solitaire';
+
 //includes
 import './Assets/css/default.min.css';
 
@@ -24,9 +27,9 @@ class App extends Component {
                 <Route exact path='/' component={Login} />
                 <Route exact path='/Homepage' component={Homepage} />
                 <Route exact path='/Contact' component={Contact} />
-                <Route exact path='/solitaire' component={} />
-                <Route exact path='/pong' component={pong} />
-
+                <Route exact path='/Chat' component={Chat} />
+                <Route exact path='/Checkers' component={Checkers} />
+                <Route exact path='/Solitaire' component={Solitaire} />
 
                 <Footer/>
             </div>

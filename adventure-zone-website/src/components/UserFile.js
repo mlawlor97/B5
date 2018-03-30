@@ -1,22 +1,19 @@
-class UserFile{
+var userName = {
+    username: '',
+    ip: 'proj-319-B5.cs.iastate.edu',
+    // ip: '10.26.56.58',
 
-    constructor() {
-        this.state = {
-            username: ''
-        }
-        this.getUserName = this.getUserName.bind(this);
-        this.setName = this.setName.bind(this);
+
+    get name() {
+        return this.username;
+    },
+    set name(props) {
+        this.username = props;
+    },
+
+    get getip() {
+        return this.ip;
     }
+};
 
-    static getUserName = () => {
-        return this.state.username;
-    }
-
-    static setName = (props) => {
-        this.state.username = props;
-        return;
-    }
-
-}
-
-export default UserFile;
+export const User = userName;

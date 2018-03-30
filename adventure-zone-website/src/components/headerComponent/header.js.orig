@@ -24,8 +24,12 @@ class Header extends Component {
 
                 <span>
                     <h1 className="App-title"><b>ADVENTURE ZONE</b></h1>
+<<<<<<< HEAD
+                    <h2>Welcome: {UserFile.getUserName()}</h2>
+=======
                     <h2 className="User-title" hidden={User.name === ''}>
                         Welcome: {User.name}</h2>
+>>>>>>> master
                     <nav className="App-links">
                         <ul>
                         <li><Link to="/Homepage">Home</Link></li>
