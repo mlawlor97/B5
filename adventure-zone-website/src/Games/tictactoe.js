@@ -109,26 +109,21 @@ function set() {
         startNewGame();
     } else {
         turn = turn === "X" ? "O" : "X";
-        //document.getElementById('turn').textContent = 'Player ' + turn;
+        document.getElementById('turn').textContent = 'Player ' + turn;
     }
-}
-
-function meme() {
-    console.log("we out here");
-    alert("we out here!");
 }
 
 class TicTacToe extends Component {
     componentDidMount(){
-        console.log("in the componentDidMount function")
+        alert("in the componentDidMount function")
         init()
     }
      render() {
-         console.log("in the render function")
+         alert("in the render function")
          return (
             <div className='Tictactoe'>
-                <div id="tictactoe"></div>
-                {meme()}
+                <div id="tictactoe" />
+                 <div id="turn" />
             </div>
         );
     }  
