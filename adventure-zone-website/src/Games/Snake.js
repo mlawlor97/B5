@@ -32,6 +32,7 @@ function init(){
         // Keydown Event
         document.onkeydown = function(event) {
             self.pressKey = event.which;
+            event.preventDefault();
         };
 
         // Get Key
