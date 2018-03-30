@@ -395,11 +395,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522379696362</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Got snake working">
+      <created>1522379709150</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1522379709150</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25497000" />
+    <option name="totallyTimeSpent" value="25555000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -449,7 +456,8 @@
     <MESSAGE value="Added react implementation of pong, testing to see if it works" />
     <MESSAGE value="Got pong working" />
     <MESSAGE value="Got tetris working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Got tetris working" />
+    <MESSAGE value="Got snake working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Got snake working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
