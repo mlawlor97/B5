@@ -12,6 +12,7 @@ import Contact from './components/pages/contact';
 import Login from './components/pages/login';
 import Chat from './components/pages/chat';
 import Checkers from './Games/Checkers';
+import TicTacToe from './Games/tictactoe';
 import Solitaire from './Games/Solitaire';
 import Pong from './Games/pong';
 import Tetris from './Games/Tetris';
@@ -20,6 +21,7 @@ import Snake from './Games/Snake';
 //includes
 import './Assets/css/default.min.css';
 import Admin from "./components/pages/admin";
+
 
 class App extends Component {
     render() {
@@ -38,6 +40,7 @@ class App extends Component {
                 <Route exact path='/Pong' component={Pong} />
                 <Route exact path='/Tetris' component={Tetris} />
                 <Route exact path='/Snake' component={Snake} />
+                <Route exact path='/Tictactoe' component={TicTacToe} />
 
                 <Footer/>
             </div>

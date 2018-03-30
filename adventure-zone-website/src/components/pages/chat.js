@@ -1,4 +1,4 @@
-import React from 'react';
+=import React from 'react';
 import {Messages} from '../Messages';
 import {User} from '../UserFile';
 import io from 'socket.io-client';

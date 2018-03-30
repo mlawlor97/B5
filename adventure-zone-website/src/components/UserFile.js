@@ -4,7 +4,6 @@ var userName = {
     // ip: '10.26.56.58',
     admin: false,
 
-
     get name() {
         return this.username;
     },
