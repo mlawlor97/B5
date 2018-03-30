@@ -16,6 +16,7 @@ import Solitaire from './Games/Solitaire';
 
 //includes
 import './Assets/css/default.min.css';
+import Admin from "./components/pages/admin";
 
 class App extends Component {
     render() {
@@ -28,6 +29,7 @@ class App extends Component {
                 <Route exact path='/Homepage' component={Homepage} />
                 <Route exact path='/Contact' component={Contact} />
                 <Route exact path='/Chat' component={Chat} />
+                <Route exact path='/Admin-Page' component={Admin} />
                 <Route exact path='/Checkers' component={Checkers} />
                 <Route exact path='/Solitaire' component={Solitaire} />
 

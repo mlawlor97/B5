@@ -53,6 +53,9 @@ class Login extends Component {
         if (response.status === 200) {
             const message = await response.json();
             alert(message['message']);
+            if (message['admin'] === 'A') {
+                User.adminStatus = true;
+            }
             if (message['message'] === 'you are logged in') {
                 User.name = data.username;
                 this.forceUpdate();
@@ -143,6 +146,7 @@ class Login extends Component {
                   <button onClick={() => {
                       this.tryLogout(User.name);
                       User.name = '';
+                      User.adminStatus = false;
                       this.forceUpdate();
                   }}>Logout</button>
               </div>

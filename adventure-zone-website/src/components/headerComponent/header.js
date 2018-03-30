@@ -7,7 +7,16 @@ import Login from '../pages/login';
 
 class Header extends Component {
 
+    refresh = null;
+
+    componentDidMount() {
+        this.refresh = setInterval(() => {
+            this.forceUpdate();
+        }, 500);
+    }
+
     componentWillUnmount() {
+        clearInterval(this.refresh);
         Login.tryLogout(User.name);
     }
 
@@ -16,6 +25,13 @@ class Header extends Component {
             return <div>Login</div>;
         }
         return <div>Logout</div>;
+    }
+
+    getContactLink() {
+        if (User.adminStatus) {
+            return (<div><Link to="/Admin-Page">Admin Page</Link></div>);
+        }
+        return (<div><Link to='/Contact'>Contact</Link></div>)
     }
 
     render() {
@@ -30,7 +46,7 @@ class Header extends Component {
                         <ul>
                         <li><Link to="/Homepage">Home</Link></li>
                         <li><Link to="/">{this.getValue()}</Link></li>
-                        <li><Link to="/Contact" >Contact</Link></li>
+                        <li>{this.getContactLink()}</li>
                         </ul>
                     </nav>
                 </span>
