@@ -134,10 +134,19 @@ class friends extends Component {
     };
 
     getEditButton() {
-        if (this.changeFriends) {
-            return (<div>DONE</div>);
+        if (User.name === '') {
+            return (<div></div>);
         }
-        return (<div>EDIT</div>)
+        if (this.changeFriends) {
+            return (<button onClick={() => {
+                this.changeFriends = !this.changeFriends;
+                this.forceUpdate();
+            }}>DONE</button>);
+        }
+        return (<button onClick={() => {
+            this.changeFriends = !this.changeFriends;
+            this.forceUpdate();
+        }}>EDIT</button>);
     }
 
     getFriendTile(friend) {
@@ -178,7 +187,8 @@ class friends extends Component {
                 <h2><b>FRIENDS</b>
                 </h2>
                 <input type='text' placeholder={'Look for:'} name={'friend'}
-                       onChange={this.onFieldChange('friend').bind(this)}/>
+                       onChange={this.onFieldChange('friend').bind(this)}
+                       autoComplete="off" autoCorrect="off"/>
                 <button onClick={() => this.addFriend()}>+</button>
                 {this.state.friendList.map((friend) => {
                     return (
@@ -191,12 +201,13 @@ class friends extends Component {
                     );
                 })}
                 <hr/>
-                <button onClick={() => {
-                    this.changeFriends = !this.changeFriends;
-                    this.forceUpdate();
-                }}>
-                    {this.getEditButton()}
-                </button>
+                {this.getEditButton()}
+                {/*<button onClick={() => {*/}
+                    {/*this.changeFriends = !this.changeFriends;*/}
+                    {/*this.forceUpdate();*/}
+                {/*}}>*/}
+                    {/*{this.getEditButton()}*/}
+                {/*</button>*/}
             </div>
 
         );

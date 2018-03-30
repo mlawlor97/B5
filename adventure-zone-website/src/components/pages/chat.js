@@ -48,7 +48,7 @@ class Chat extends React.Component {
 
     sendMessage(info) {
         //send message through socket
-        this.socket.emit('new message', {
+        this.socket.emit('new message', { //breaks on long messages
             message: info.message,
             time: info.time
         });
@@ -66,7 +66,7 @@ class Chat extends React.Component {
         return (
             <div>
                 <div className="container">
-                    <p align="left">{info.user + ": " + info.message}</p>
+                    <p className="textP" align="right">{info.user + ": " + info.message}</p>
                     <span className="time-right">{info.time}</span>
                 </div>
             </div>
@@ -77,7 +77,7 @@ class Chat extends React.Component {
         return (
             <div>
                 <div className="container darker">
-                    <p align="left">{info.user + ": " + info.message}</p>
+                    <p className="textPdark" align="left">{info.user + ": " + info.message}</p>
                     <span className="time-left">{info.time}</span>
                 </div>
             </div>
@@ -119,11 +119,10 @@ class Chat extends React.Component {
 
                 <div className="container">
                     <span>
-                        <input type="text" name="message" placeholder="message"
+                        <input type="text" name="message" placeholder="message" size={90}
                                onChange={this.onFieldChange('message').bind(this)}/>
                         <input type="submit" value="Submit"
-                               onClick={() => this.sendMessage
-                               ({message: this.state.message, time: this.getTime(Date.now())})}/>
+                               onClick={() => this.sendMessage({message: this.state.message, time: this.getTime(Date.now())})}/>
                     </span>
                 </div>
 
