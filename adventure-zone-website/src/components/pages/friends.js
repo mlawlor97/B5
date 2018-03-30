@@ -173,7 +173,7 @@ class friends extends Component {
             </div>
             <div className="friend-status">
                 {/*might change to colored dots to represent status*/}
-                <button onClick={() => this.deleteFriend(friend.name)}>-</button>
+                <button onClick={() => this.deleteFriend(friend.name)}>DELETE</button>
             </div>
             <hr/>
         </div>)
@@ -202,12 +202,6 @@ class friends extends Component {
                 })}
                 <hr/>
                 {this.getEditButton()}
-                {/*<button onClick={() => {*/}
-                    {/*this.changeFriends = !this.changeFriends;*/}
-                    {/*this.forceUpdate();*/}
-                {/*}}>*/}
-                    {/*{this.getEditButton()}*/}
-                {/*</button>*/}
             </div>
 
         );
