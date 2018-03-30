@@ -21,7 +21,6 @@ function init() {
     var board = document.createElement('table');
     board.setAttribute("border", 1);
     board.setAttribute("cellspacing", 0);
-    alert("I am here...");
 
     var identifier = 1;
     for (var i = 0; i < N_SIZE; i++) {
@@ -115,11 +114,9 @@ function set() {
 
 class TicTacToe extends Component {
     componentDidMount(){
-        alert("in the componentDidMount function")
         init()
     }
      render() {
-         alert("in the render function")
          return (
             <div className='Tictactoe'>
                 <div id="tictactoe" />
