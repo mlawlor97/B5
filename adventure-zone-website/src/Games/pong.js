@@ -341,7 +341,10 @@ function init() {
                 if (key.keyCode === 38 || key.keyCode === 87) Pong.player.move = DIRECTION.UP;
 
                 // Handle down arrow and s key events
-                if (key.keyCode === 40 || key.keyCode === 83) Pong.player.move = DIRECTION.DOWN;
+                if (key.keyCode === 40 || key.keyCode === 83) {
+                    Pong.player.move = DIRECTION.DOWN;
+                    key.preventDefault();
+                }
             });
 
             // Stop the player from moving when there are no keys being pressed.
