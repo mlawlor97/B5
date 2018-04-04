@@ -114,11 +114,14 @@ class Chat extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.renderMessages()}
+            <div className="chat_container">
+
+                <div className="chat_messages">
+                    {this.renderMessages()}
+                </div>
 
                 <div className="container">
-                    <span>
+                    <span className="chat_input">
                         <input type="text" name="message" placeholder="message" size={90}
                                onChange={this.onFieldChange('message').bind(this)}/>
                         <input type="submit" value="Submit"

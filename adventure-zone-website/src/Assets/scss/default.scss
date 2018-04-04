@@ -45,7 +45,7 @@ header {
 .App {
     text-align: center;
     background-color: #234566;
-    height: 1500px; /*dummy number*/
+    height: 1200px; /*dummy number*/
     /*padding-bottom: 5%;*/
 }
 
@@ -65,6 +65,8 @@ header {
     border: 2px solid black;
     border-radius: 5px;
     padding-bottom: 1em;
+
+    max-height: 500px;
 }
 
 .Game-list {
@@ -74,16 +76,21 @@ header {
     width: 79%;
     border: 2px solid black;
     border-radius: 15px;
+
+    max-height: 1000px;
 }
 
 .grid-container {
     display: grid;
     align-items: center;
     grid-template-columns: 32% 32% 32%;
-    grid-gap: 20px;
-    grid-row-gap: 20px;
+    grid-gap: 1%;
+    grid-row-gap: 8%;
     padding-left: 1%; padding-right: 1%;
     padding-bottom: 2%;
+
+    max-height: 90%;
+    overflow-y: auto;
 }
 
 .grid-item {
@@ -235,4 +242,17 @@ p {
 .input-bet {
   display: flex;
   justify-content: center;
+}
+
+.chat_container {
+    height: 35%;
+}
+
+.chat_input {
+    height: 5%;
+}
+
+.chat_messages {
+    height: 95%;
+    overflow-y: auto;
 }
