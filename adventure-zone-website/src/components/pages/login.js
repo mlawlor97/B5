@@ -126,18 +126,23 @@ class Login extends Component {
         if (User.name === '') {
             return (
                 <form>
-                    <label>
-                        Username: <input type="text" value={this.state.username} name="username"
-                                         onChange={this.onFieldChange('username').bind(this)}
-                                         placeholder={'username'} autoComplete="off" autoCorrect="off"/>
-                    </label><br/>
-                    <label>
-                        Password: <input type="text" value={this.state.password} name="password"
-                                         onChange={this.onFieldChange('password').bind(this)}
-                                         placeholder={'password'} autoComplete="off" autoCorrect="off"/>
-                    </label><br/>
-                    <button type="submit" onClick={this.handleSubmit}>Login</button>
-                    <button type="submit" onClick={this.handleRegister}>Register</button>
+                    <div className="login-form">
+                        <label>
+                            Username: <input type="text" value={this.state.username} name="username"
+                                             onChange={this.onFieldChange('username').bind(this)}
+                                             placeholder={'username'} autoComplete="off" autoCorrect="off"/>
+                        </label><br/>
+                        <label>
+                            Password: <input type="text" value={this.state.password} name="password"
+                                             onChange={this.onFieldChange('password').bind(this)}
+                                             placeholder={'password'} autoComplete="off" autoCorrect="off"/>
+                        </label><br/>
+
+                        <div>
+                            <button type="submit" onClick={this.handleSubmit}>Login</button>
+                            <button type="submit" onClick={this.handleRegister}>Register</button>
+                        </div>
+                    </div>
                 </form>
             );
         } else {

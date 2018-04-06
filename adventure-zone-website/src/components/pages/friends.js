@@ -190,16 +190,18 @@ class friends extends Component {
                        onChange={this.onFieldChange('friend').bind(this)}
                        autoComplete="off" autoCorrect="off"/>
                 <button onClick={() => this.addFriend()}>+</button>
-                {this.state.friendList.map((friend) => {
-                    return (
-                        <div key={friend.name} className="Friend" onClick={() => {
-                            Messages.other = friend.name;
-                            if (!this.changeFriends) {this.setRedirect();}
-                        }}>
-                            {this.getFriendTile(friend)}
-                        </div>
-                    );
-                })}
+                <div className="Friend-tags">
+                    {this.state.friendList.map((friend) => {
+                        return (
+                            <div key={friend.name} className="Friend" onClick={() => {
+                                Messages.other = friend.name;
+                                if (!this.changeFriends) {this.setRedirect();}
+                            }}>
+                                {this.getFriendTile(friend)}
+                            </div>
+                        );
+                    })}
+                </div>
                 <hr/>
                 {this.getEditButton()}
             </div>

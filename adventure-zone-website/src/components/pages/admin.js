@@ -104,22 +104,24 @@ class Admin extends Component {
 
     getBanButton(props) {
         if (props.banned === 1) {
-            return (<button onClick={() => {this.unbanUser(props)}}>UNBAN</button>);
+            return (<button className="user-col" onClick={() => {this.unbanUser(props)}}>UNBAN</button>);
         } else {
-            return (<button onClick={() => {this.banUser(props)}}>BAN</button>);
+            return (<button className="user-col" onClick={() => {this.banUser(props)}}>BAN</button>);
         }
     }
 
     render() {
         return (
-            <div>
+            <div className="user-list">
                 {this.state.allUsers.map((user) => {
                     return (
-                        <div key={user.name}>
-                            <b>{user.name}  --  </b>
-                            <b>{user.admin}  --  </b>
-                            {this.getBanButton(user)}
-                            <button onClick={() => {this.deleteUser(user.name)}}>DELETE</button>
+                        <div className="user-tag">
+                            <div key={user.name}>
+                                <b className="user-col">{user.name}</b>
+                                <p className="user-col"><b>{user.admin}</b></p>
+                                {this.getBanButton(user)}
+                                <button className="user-col" onClick={() => {this.deleteUser(user.name)}}>DELETE</button>
+                            </div>
                         </div>
                     );
                 })}
