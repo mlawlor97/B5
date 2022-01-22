@@ -12,7 +12,7 @@
     "enzyme": "^3.3.0",
     "jest-react-native": "^18.0.0",
     "jquery": "^3.3.1",
-    "node-fetch": "^2.0.0",
+    "node-fetch": "^3.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-popup": "^0.9.2",
